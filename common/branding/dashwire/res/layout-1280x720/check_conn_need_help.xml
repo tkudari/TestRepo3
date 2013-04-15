@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    		android:id="@+id/relativeLayout2" 
+    		android:layout_width="match_parent" 
+    		android:layout_height="match_parent"
+    		android:background="@color/white">
+    	<LinearLayout 
+    		android:id="@+id/linearLayout1" 
+        	android:layout_width="match_parent" 
+        	android:layout_height="wrap_content" 
+        	android:orientation="vertical">
+        	
+        <!-- Top Bar -->
+        <include layout="@layout/top_bar_grey" />
+        	
+        <!--  Title Layout -->
+    	<LinearLayout 
+    		android:layout_height="wrap_content" 
+        	android:id="@+id/linearLayout3" 
+        	android:layout_width="match_parent" 
+        	android:gravity="center_horizontal"
+        	android:paddingTop="15dp">
+	           	<TextView 
+           			style="@style/global_title_text_orange" 
+           			android:id="@+id/check_conn_need_help_title" 
+           			android:text="@string/check_conn_need_help_title" 
+           			android:gravity="center|left" 
+           			android:layout_height="wrap_content" 
+           			android:layout_width="wrap_content" 
+           			android:paddingTop="10dp"
+           			android:paddingLeft="20dp"
+           			android:paddingRight="20dp">
+           		</TextView>
+    	</LinearLayout>
+    	
+    	<!--  Body Layout -->
+    	<LinearLayout 
+	    	android:layout_height="wrap_content" 
+        	android:id="@+id/linearLayout4" 
+        	android:layout_width="match_parent" 
+        	android:paddingTop="20dp">
+	           	<TextView 
+           			style="@style/global_body_text_grey" 
+           			android:id="@+id/check_conn_need_help_body" 
+           			android:text="@string/check_conn_need_help_body" 
+           			android:layout_height="wrap_content" 
+           			android:layout_width="wrap_content" 
+           			android:gravity="center|left"
+           			android:paddingLeft="20dp"
+           			android:paddingRight="20dp">
+           		</TextView>
+    	</LinearLayout>
+    	
+    	<!--  Graphic Layout -->
+    	<LinearLayout 
+	    	android:id="@+id/linearLayout5" 
+    		android:layout_height="wrap_content" 
+    		android:layout_width="match_parent" 
+    		android:gravity="center" 
+    		android:paddingTop="20dp"
+    		android:paddingBottom="25dp">
+    		<ImageView 
+           			android:id="@+id/error" 
+        		    android:layout_height="180dp" 
+           		    android:layout_width="180dp"  
+           			android:background="@drawable/error">
+           	</ImageView>
+    	</LinearLayout>
+    	   	
+    	</LinearLayout>
+    	
+    	<!-- Button Layout -->
+	<LinearLayout
+		android:id="@+id/button_layout"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@drawable/wizard_bottom"
+		android:layout_alignParentBottom="true"
+		android:paddingTop="5dp"
+		android:paddingBottom="2dp"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp">
+		<!-- Back Button -->
+		<Button
+			android:text="@string/button_cancel"
+			android:id="@+id/cancel_button"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5"
+			style="@style/button_text_black">
+		</Button>
+		<!-- Next Button -->
+		<Button
+			android:text="@string/button_try_again"
+			android:id="@+id/try_again_button"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5"
+			style="@style/button_text_black">
+		</Button>
+	</LinearLayout>
+   	</RelativeLayout>

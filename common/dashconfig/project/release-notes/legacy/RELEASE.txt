@@ -1,0 +1,54 @@
+== Release Notes
+
+== 0.7.8 (HTC Congressional)
+* Congressional: Fixed google account setup. 
+* Known issues: Email not working on latest verion of ROM. 
+                If there is only one configuration element, it does not advance to completion page.
+
+== 0.7.7 (HTC Congressional)
+* Congressional: Initial Alpha release with contacts, wallpaper, apps, bookmarks, widgets, shortcuts ringtones and notifications working. Email and Wifi not working.
+
+== 0.7.6 (Quincy)
+* Quincy: Removed logs which had email account credential. Removed illegal character on "https://ready2go.att.com/t/CheckIn Timeout"
+
+== 0.7.5 (Quincy)
+* Quincy: Fix for non-email addition to Email App and android.priority = 500
+
+== 0.7.2 (Quincy)
+* Quincy: Fix for non-email addition to Email App.
+
+== 0.7.1 (Luna)
+* Luna: Fix for 1 crash on DCFG 583 (Removed illegal character on "https://ready2go.att.com/t/CheckIn Timeout")
+
+== 0.7.0 (Luna)
+* Luna: Fix for DCFG 548, 546, 485
+
+== 0.6.9 (Luna)
+* Luna: Fix for widgets, shortcuts and added tracking in notification launch, setup wizard, icon start and all button clicks
+* dashwire_service: v0.1.2 - Added advanced widgets tag for luna
+
+== 0.6.8 (Auger and Magnem)
+* Luna: fix for Notification Sound after first boot
+
+== 0.6.7 (Luna)
+* Luna: Check for Security - Closes app if the device is not "Sony Erricson Luna of ATT"
+
+== 0.6.6 (Luna)
+* Luna: Initial Beta build for Sony Ericsson Luna
+
+== 0.6.5 (Magnum)
+ Bugs:
+* Magnum: Fix for spurious I/O connection error on hotmail config
+
+== 0.6.4 (Auger)
+ Bugs:
+* Auger: Fix for spurious I/O connection error on hotmail config [ https://jira.dashwire.com/browse/DCFG-526]
+
+ Minor:
+* Use reflection to set the logs and debug statements for eas package.
+* Only verify classes if configurator 3000 is installed.
+* Make widgets and shortcuts easier to unit test
+
+=== 0.6.3
+* All Devices - Google Location screen wording correction
+* Magnum - Spanish screen alignments - Start Screen, Display code Screen, Connected, Screen, Completed Screen

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules">
+    <!--
+        Common tasks defined for apk testing
+    -->
+    <import file="${env.WORKSPACE}/common/tests/dashconfig/project/custom_rules.xml" />
+</project>

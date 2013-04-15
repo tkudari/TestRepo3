@@ -1,0 +1,2 @@
+== HTC Release Notes
+- Build with HTC Wallpaper solution without HTC Sense implementation

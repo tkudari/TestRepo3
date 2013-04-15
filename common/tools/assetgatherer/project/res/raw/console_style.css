@@ -1,0 +1,12 @@
+DIV.header {
+    background-color: #333355;
+    height: 75px;
+    color: white;
+    padding: 10px;
+    font-family: Verdana;
+    font-size: 18px;
+}
+
+DIV.body {
+    padding: 15px;
+}

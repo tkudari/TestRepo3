@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common" default="help" xmlns:ac="ant-contrib" xmlns:al="ant-antelope">
+
+	<condition property="product" value="${env.PRODUCT}">
+		<and>
+			<not>
+				<isset property="product" />
+			</not>
+			<length string="${env.PRODUCT}" when="greater" length="0" />
+			<isset property="env.PRODUCT" />
+		</and>
+	</condition>
+	<fail unless="product" message="PRODUCT is not specified" />
+
+	<condition property="oem" value="${env.OEM}">
+		<and>
+			<not>
+				<isset property="oem" />
+			</not>
+			<length string="${env.OEM}" when="greater" length="0" />
+			<isset property="env.OEM" />
+		</and>
+	</condition>
+	<fail unless="oem" message="OEM is not specified" />
+
+	<condition property="brand" value="${env.BRAND}">
+		<and>
+			<not>
+				<isset property="brand" />
+			</not>
+			<length string="${env.BRAND}" when="greater" length="0" />
+			<isset property="env.BRAND" />
+		</and>
+	</condition>
+	<fail unless="brand" message="BRAND is not specified" />
+
+	<property file="${env.WORKSPACE}/${product.dir}/${product}.properties" />
+	<property file="${env.WORKSPACE}/build/components.properties" />
+	<property name="features.main.dir"
+		value="${env.WORKSPACE}/ra/shared/features_testing/main" />
+	<property name="features.fctnl_test.dir"
+		value="${env.WORKSPACE}/ra/shared/features_testing/fctnl_test" />
+	<property name="component" value="test" />
+	<property name="features.fctnl_test.build.file"
+		value="${env.WORKSPACE}ra/shared/features_testing/fctnl_test/build.xml" />
+
+	<property name="screenshot.main.dir" value="${env.WORKSPACE}/ra/shared/screen_shot/main" />
+	<property name="screenshot.test.dir" value="${env.WORKSPACE}/ra/shared/screen_shot/test" />
+	<property name="asset.gatherer.common.dir" value="/common/tools/assetgatherer/project" />
+	<property name="asset.gatherer.oem.dir"
+		value="/extensions/${oem}/common/tools/assetgatherer/project" />
+	<property name="target-android" value="android-17" />
+
+	<target name="init-product">
+		<echo>Initializing Environment ...</echo>
+		<echo>Product = ${product}</echo>
+		<echo>Brand = ${brand}</echo>
+		<echo>Oem = ${oem}</echo>
+
+		<ac:if>
+			<ac:equals arg1="${product}" arg2="r2g" />
+			<ac:then>
+				<echo message="PRODUCT is Ready2Go." />
+				<property name="product.dir"
+					value="/extensions/${oem}/common/dashconfig/project" />
+				<property name="intg_test.dir"
+					value="${env.WORKSPACE}/ra/${product}/${brand}/intg_test" />
+				<property name="intg_testrunner"
+					value="com.dashwire.${product}.${brand}.intg.test/pl.polidea.instrumentation.PolideaInstrumentationTestRunner" />
+			</ac:then>
+			<else>
+				<echo message="PRODCUT is ${product}" />
+				<property name="product.dir" value="/ra/${product}/${brand}/main" />
+				<property name="intg_test.dir"
+					value="${env.WORKSPACE}/ra/${product}/${brand}/intg_test" />
+				<property name="intg_testrunner"
+					value="com.dashwire.${product}.${brand}.intg.test/android.test.InstrumentationTestRunner" />
+			</else>
+		</ac:if>
+
+		<echo>Product Dir = ${product.dir}</echo>
+		<property name="product.build.file" value="${env.WORKSPACE}${product.dir}/build.xml" />
+		<echo>Product Build File = ${env.WORKSPACE}${product.dir}/build.xml</echo>
+		<echo>Product Intg Test Dir = ${intg_test.dir}</echo>
+		<property name="intg_test.build.file" value="${intg_test.dir}/build.xml" />
+		<echo>Product Intg Test Build File = ${intg_test.build.file}</echo>
+
+		<loadproperties
+			srcFile="${env.WORKSPACE}/${product.dir}/${product}.properties" />
+
+		<delete file="${env.WORKSPACE}/${product.dir}/project.properties" />
+
+		<propertyfile file="${env.WORKSPACE}/${product.dir}/project.properties">
+			<entry key="manifestmerger.enabled" value="true" />
+			<entry key="proguard.config" value="proguard-project.txt" />
+		</propertyfile>
+
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/${product.dir}">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+			<arg value="-t" />
+			<arg value="${target-android}" />
+		</exec>
+	</target>
+
+	<target name="increment-version">
+		<echo>Incrementing Verson ...</echo>
+		<propertyfile file="${env.WORKSPACE}/build/version.properties">
+			<entry key="app.version.code" type="int" operation="+" value="1"
+				pattern="0" />
+		</propertyfile>
+	</target>
+
+	<target name="apply-version">
+		<property file="${env.WORKSPACE}/build/version.properties" />
+		<echo>Applying verion into Manifest ...</echo>
+		<echo>Version code: ${app.version.code}</echo>
+		<echo>Version name:
+			${app.version.major}.${app.version.minor}.${app.version.code}
+		</echo>
+
+		<property name="match.end" value='"' />
+
+		<property name="matchVersionCode.start" value='android:versionCode=\"' />
+		<replaceregexp file="AndroidManifest.xml"
+			match='${matchVersionCode.start}[^"]*${match.end}' replace="${matchVersionCode.start}${app.version.code}${match.end}" />
+
+		<property name="matchVersionName.start" value='android:versionName=\"' />
+		<replaceregexp file="AndroidManifest.xml"
+			match='${matchVersionName.start}[^"]*${match.end}'
+			replace="${matchVersionName.start}${app.version.major}.${app.version.minor}.${app.version.code}${match.end}" />
+	</target>
+
+	<target name="rename-apks" description="Renaming built apks">
+		<property file="${env.WORKSPACE}/build/version.properties" />
+		<move todir="${out.dir}">
+			<fileset dir="${out.dir}" />
+			<mapper type="regexp" from="^(.*)\.apk$$"
+				to="\1_${app.version.major}.${app.version.minor}.${app.version.code}.apk" />
+		</move>
+	</target>
+
+	<target name="set-debuggable-false">
+		<echo>Set debuggable to false ...</echo>
+		<property name="match.end" value='"' />
+		<property name="matchDebuggable.start" value='android:debuggable=\"' />
+		<replaceregexp file="AndroidManifest.xml"
+			match='${matchDebuggable.start}[^"]*${match.end}' replace="${matchDebuggable.start}false${match.end}" />
+	</target>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml" uri="ant-contrib">
+		<classpath>
+			<fileset dir="${env.WORKSPACE}/build/ant.lib/ant-contrib" />
+		</classpath>
+	</taskdef>
+	
+	<taskdef resource="ise/antelope/tasks/antlib.xml" uri="ant-antelope">
+		<classpath>
+			<fileset dir="${env.WORKSPACE}/build/ant.lib/ant-antelope" />
+		</classpath>
+	</taskdef>
+	
+<!-- 	<taskdef resource="ise.antelope.tasks.antelope.taskdefs" -->
+<!--                   classpath="${env.WORKSPACE}/build/ant.lib/ant-antelope/AntelopeTasks_3.4.2"/> -->
+
+	<scriptdef name="increase.index" language="javascript">
+		<attribute name="value" />
+		<attribute name="property" />
+        <![CDATA[
+       var initVal = attributes.get("value");
+             var finalVal = String.fromCharCode(initVal.charAt(0) + 1);
+
+       for(i = 1; i < initVal.length(); i++)
+             {
+               finalVal = finalVal.concat(String.fromCharCode(initVal.charAt(i) + 1));
+             }
+       project.setProperty(attributes.get("property"), finalVal);
+     ]]>
+	</scriptdef>
+
+	<target name="install-component">
+		<echo>Component : ${component}
+		</echo>
+		<ac:for list="${component}" param="each.component">
+			<sequential>
+				<echo>~~~~~~@{each.component}~~~~~~</echo>
+				<echo>Component path :
+					${env.WORKSPACE}/ra/${@{each.component}.path}/main</echo>
+
+				<echo>Uninstalling com.dashwire.</echo>
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="uninstall" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+
+				<exec executable="${env.ANDROID_HOME}/tools/android"
+					failonerror="true" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main">
+					<arg line="update" />
+					<arg value="project" />
+					<arg value="-p" />
+					<arg value="." />
+				</exec>
+
+				<propertyfile
+					file="${env.WORKSPACE}/ra/${@{each.component}.path}/main/project.properties">
+					<entry key="android.library" value="false" />
+				</propertyfile>
+
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="clean" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="debug" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="installd" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+
+				<propertyfile
+					file="${env.WORKSPACE}/ra/${@{each.component}.path}/main/project.properties">
+					<entry key="android.library" value="true" />
+				</propertyfile>
+
+			</sequential>
+		</ac:for>
+	</target>
+
+	<target name="do-component-test" depends="install-component">
+
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/features_testing/main">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<ac:for list="${component}" param="each.component">
+			<sequential>
+				<echo>Component Test : ~~~~~~@{each.component}~~~~~~</echo>
+				<echo>Component path :
+					${env.WORKSPACE}/ra/${@{each.component}.path}/main</echo>
+
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="clean" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="debug" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="installd" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="test" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+			</sequential>
+		</ac:for>
+	</target>
+
+	<target name="do-unit-test" depends="init-product, gen-properties">
+		<echo>***************Starting Unit Tests *************</echo>
+		<ac:for list="${components.list}" param="each.component">
+			<sequential>
+				<echo>~~~~~~Starting Unit Test of Component :
+					@{each.component}~~~~~~
+				</echo>
+				<echo>Component path :
+					${env.WORKSPACE}/ra/${@{each.component}.path}/main
+				</echo>
+
+				<exec executable="${env.ANDROID_HOME}/tools/android"
+					failonerror="true" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main">
+					<arg line="update" />
+					<arg value="project" />
+					<arg value="-p" />
+					<arg value="." />
+				</exec>
+
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="clean" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="debug" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test/build.xml"
+					target="clean" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test/build.xml"
+					target="build" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test/build.xml"
+					target="cobertura" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/unit_test"
+					inheritAll="false" />
+				<echo>~~~~~~Ending Unit Test of Component : @{each.component}~~~~~~
+				</echo>
+			</sequential>
+		</ac:for>
+
+		<echo>Unit test for Common project</echo>
+
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/common/dashconfig/project">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<ant antfile="${env.WORKSPACE}/common/dashconfig/project/build.xml"
+			target="clean" dir="${env.WORKSPACE}/common/dashconfig/project"
+			inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/common/dashconfig/project/build.xml"
+			target="debug" dir="${env.WORKSPACE}/common/dashconfig/project"
+			inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/common_unit_test/build.xml" target="clean"
+			dir="${env.WORKSPACE}/common_unit_test" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/common_unit_test/build.xml" target="build"
+			dir="${env.WORKSPACE}/common_unit_test" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/common_unit_test/build.xml" target="cobertura"
+			dir="${env.WORKSPACE}/common_unit_test" inheritAll="false" />
+
+		<echo>***************Ending Unit Tests *************</echo>
+
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+	</target>
+
+	<target name="-update-test-projects">
+			<ac:for list="${components.list}" param="each.component">
+				<sequential>
+					<echo>Updating test projects for component: ${@{each.component}.path}</echo>
+
+					<al:unset file="../../../../../ra/${@{each.component}.path}/fctnl_test/ant.properties"/>
+
+					<exec executable="${env.ANDROID_HOME}/tools/android"
+						failonerror="true"
+						dir="../../../../../ra/${@{each.component}.path}/fctnl_test">
+						<arg line="update" />
+						<arg value="test-project" />
+						<arg value="-m" />
+						<arg value="${env.WORKSPACE}/ra/shared/features_testing/main" />
+						<arg value="-p" />
+						<arg value="." />
+					</exec>
+				</sequential>
+			</ac:for>
+	</target>
+
+
+	<target name="do-fctnl-test"
+		depends="uninstall-all, prepare-asset-gatherer, install-debug-build">
+
+	    <!-- <delete file="../../../../../ra/${@{each.component}.path}/fctnl_test/ant.properties" /> -->
+	    	    
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/features_testing/main">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<ac:for list="${components.list}" param="each.component">
+			<sequential>
+				<echo>Component Test : ~~~~~~@{each.component}~~~~~~</echo>
+				<echo>Component path :
+					${env.WORKSPACE}/ra/${@{each.component}.path}/main</echo>
+					
+				<al:unset file="../../../../../ra/${@{each.component}.path}/fctnl_test/ant.properties"/>
+
+				<exec executable="${env.ANDROID_HOME}/tools/android"
+					failonerror="true"
+					dir="../../../../../ra/${@{each.component}.path}/fctnl_test">
+					<arg line="update" />
+					<arg value="test-project" />
+					<arg value="-m" />
+					<arg value="${env.WORKSPACE}/ra/shared/features_testing/main" />
+					<arg value="-p" />
+					<arg value="." />
+				</exec>
+				
+				<propertyfile file="../../../../../ra/${@{each.component}.path}/fctnl_test/ant.properties">
+					<entry key="key.alias" value="androiddebugkey" />
+					<entry key="key.store.password" value="android" />
+					<entry key="key.alias.password" value="android" />
+					<entry key="key.store" value="../../../../build/dashconfig_dev.keystore" />
+				</propertyfile>
+		
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="clean" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="debug" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="installd" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="test" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+			</sequential>
+		</ac:for>
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+	</target>
+
+	<target name="do-intg-test"
+		depends="uninstall-all, gen-properties, prepare-asset-gatherer">
+
+	    <echo>Generate Integration Test Properties</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${intg_test.dir}">
+			<arg line="update" />
+			<arg value="test-project" />
+			<arg value="-m" />
+			<arg value="${env.WORKSPACE}/${product.dir}" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		
+		<ant antfile="${product.build.file}" target="add-product-components-and-testing-helper" />
+		<ant antfile="${intg_test.build.file}" target="clean" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<ant antfile="${intg_test.build.file}" target="debug" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<ant antfile="${intg_test.build.file}" target="installd" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<sleep seconds="2" />
+
+		<echo>Triggering Integration Test Cases</echo>
+
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="am" />
+			<arg value="instrument" />
+			<arg value="-w" />
+			<arg value="-e" />
+			<arg value="class" />
+			<arg value="com.dashwire.${product}.intg.test.IntegrationTest" />
+			<arg
+				value="${intg_testrunner}" />
+		</exec>
+		
+		<ant antfile="${intg_test.build.file}" target="get-results" dir="${intg_test.dir}"
+			inheritAll="false" />
+
+		<sleep seconds="2" />
+		
+		<ant antfile="${intg_test.build.file}" target="getscreenshots"
+			dir="${intg_test.dir}" inheritAll="false" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+	</target>
+
+	<target name="do-smoke-test"
+		depends="uninstall-all, gen-properties, prepare-asset-gatherer, prepare-screenshot">
+
+	    <echo>Generate Integration Test Properties</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${intg_test.dir}">
+			<arg line="update" />
+			<arg value="test-project" />
+			<arg value="-m" />
+			<arg value="${env.WORKSPACE}/${product.dir}" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		
+		<ant antfile="${product.build.file}" target="add-product-components-and-testing-helper" />
+		<ant antfile="${intg_test.build.file}" target="clean" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<ant antfile="${intg_test.build.file}" target="debug" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<ant antfile="${intg_test.build.file}" target="installd" dir="${intg_test.dir}"
+			inheritAll="false" />
+		<sleep seconds="2" />
+
+		<echo>Triggering Smoke Test Cases</echo>
+
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="am" />
+			<arg value="instrument" />
+			<arg value="-w" />
+			<arg value="-e" />
+			<arg value="class" />
+			<arg value="com.dashwire.${product}.intg.test.SmokeTest" />
+			<arg
+				value="${intg_testrunner}"/>
+		</exec>
+                 
+		<ant antfile="${intg_test.build.file}" target="get-results" dir="${intg_test.dir}"
+			inheritAll="false" />
+		
+		<sleep seconds="2" />
+		<ant antfile="${intg_test.build.file}" target="getscreenshots"
+			dir="${intg_test.dir}" inheritAll="false" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+	</target>
+
+	<target name="trigger-fctnl-test">
+
+		<ant
+			antfile="${env.WORKSPACE}/ra/shared/features_testing/fctnl_test/build.xml"
+			target="test" dir="${features.fctnl_test.dir}" inheritAll="false" />
+
+	</target>
+
+	<target name="trigger-smoke-test" depends="init-product">
+		<echo>Triggering Smoke Test Cases</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="am" />
+			<arg value="instrument" />
+			<arg value="-w" />
+			<arg value="-e" />
+			<arg value="class" />
+			<arg value="com.dashwire.${product}.intg.test.SmokeTest" />
+			<arg
+				value="${intg_testrunner}"/>
+		</exec>
+		<sleep seconds="2" />
+		<ant antfile="${intg_test.build.file}" target="getscreenshots"
+			dir="${intg_test.dir}" inheritAll="false" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+	</target>
+
+
+	<target name="prepare-asset-gatherer">
+		<echo>asset.gatherer.common.dir = ${asset.gatherer.common.dir}</echo>
+		<echo>asset.gatherer.oem.dir = ${asset.gatherer.oem.dir}</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}${asset.gatherer.common.dir}">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}${asset.gatherer.oem.dir}">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="clean" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="release" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="installr" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+	</target>
+
+	<target name="build-asset-gatherer">
+		<echo>asset.gatherer.common.dir = ${asset.gatherer.common.dir}</echo>
+		<echo>asset.gatherer.oem.dir = ${asset.gatherer.oem.dir}</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}${asset.gatherer.common.dir}">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}${asset.gatherer.oem.dir}">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="clean" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="release" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+	</target>
+
+	<target name="pull-assets" depends="uninstall-asset-gatherer, prepare-asset-gatherer">
+
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="am" />
+			<arg value="startservice" />
+			<arg value="-a" />
+			<arg value="com.dashwire.asset.gatherer.intent.action.START_EXTRACTION" />
+			<arg value="-n" />
+			<arg
+				value="com.dashwire.asset.gatherer.${product}/com.dashwire.asset.ExtractionService" />
+		</exec>
+
+		<sleep seconds="15" />
+
+		<ant antfile="${env.WORKSPACE}${asset.gatherer.oem.dir}/build.xml"
+			target="getAssets" dir="${env.WORKSPACE}${asset.gatherer.oem.dir}"
+			inheritAll="false" />
+	</target>
+
+	<target name="prepare-configurator3000">
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/common/tools/configurator3000/project">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<ant
+			antfile="${env.WORKSPACE}/common/tools/configurator3000/project/build.xml"
+			target="clean" dir="${env.WORKSPACE}/common/tools/configurator3000/project"
+			inheritAll="false" />
+		<ant
+			antfile="${env.WORKSPACE}/common/tools/configurator3000/project/build.xml"
+			target="debug" dir="${env.WORKSPACE}/common/tools/configurator3000/project"
+			inheritAll="false" />
+		<ant
+			antfile="${env.WORKSPACE}/common/tools/configurator3000/project/build.xml"
+			target="installd" dir="${env.WORKSPACE}/common/tools/configurator3000/project"
+			inheritAll="false" />
+	</target>
+
+	<target name="prepare-screenshot">
+		<echo>screenshot.main.dir = ${screenshot.main.dir}</echo>
+		<echo>screenshot.test.dir = ${screenshot.test.dir}</echo>
+
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/screen_shot/main">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/screen_shot/test">
+			<arg line="update" />
+			<arg value="test-project" />
+			<arg value="-m" />
+			<arg value="${env.WORKSPACE}/ra/shared/screen_shot/main" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<ac:if>
+			<ac:equals arg1="${product}" arg2="sony" />
+			<ac:then>
+				<echo message="OEM version is sony. Setting the sony platform key." />
+				<propertyfile
+					file="${env.WORKSPACE}/ra/shared/screen_shot/main/ant.properties">
+					<entry key="key.store" value="../../../../build/sony_platform.keystore" />
+				</propertyfile>
+				<propertyfile
+					file="${env.WORKSPACE}/ra/shared/screen_shot/test/ant.properties">
+					<entry key="key.store" value="../../../../build/sony_platform.keystore" />
+				</propertyfile>
+			</ac:then>
+			<else>
+				<echo message="OEM is other than sony. Setting the android platform key." />
+				<propertyfile
+					file="${env.WORKSPACE}/ra/shared/screen_shot/main/ant.properties">
+					<entry key="key.store" value="../../../../build/android_platform.keystore" />
+				</propertyfile>
+				<propertyfile
+					file="${env.WORKSPACE}/ra/shared/screen_shot/test/ant.properties">
+					<entry key="key.store" value="../../../../build/android_platform.keystore" />
+				</propertyfile>
+			</else>
+		</ac:if>
+
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/test/build.xml"
+			target="clean" dir="${screenshot.test.dir}" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/test/build.xml"
+			target="release" dir="${screenshot.test.dir}" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/main/build.xml"
+			target="clean" dir="${screenshot.main.dir}" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/main/build.xml"
+			target="release" dir="${screenshot.main.dir}" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/main/build.xml"
+			target="installr" dir="${screenshot.main.dir}" inheritAll="false" />
+		<ant antfile="${env.WORKSPACE}/ra/shared/screen_shot/test/build.xml"
+			target="installr" dir="${screenshot.test.dir}" inheritAll="false" />
+	</target>
+
+	<target name="gen-properties">
+		<echo>Generate local properties files</echo>
+
+		<echo>Common Project</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/common/dashconfig/project">
+			<arg line="update" />
+			<arg value="lib-project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<available file="${env.WORKSPACE}/common/branding/${brand}" type="dir" property="commmon.branding.exists"/>
+
+		<ac:if>
+<!--		  <equals arg1="${commmon.branding.exists}" arg2="true" /> -->
+		  <available file="${env.WORKSPACE}/common/branding/${brand}" type="dir"/>
+		  <then>
+			<echo>Common Branding Project</echo>
+<!-- 			<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true" -->
+<!-- 				dir="${env.WORKSPACE}/common/branding/${brand}"> -->
+<!-- 				<arg line="update" /> -->
+<!-- 				<arg value="lib-project" /> -->
+<!-- 				<arg value="-p" /> -->
+<!-- 				<arg value="." /> -->
+<!-- 			</exec> -->
+			
+			<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+				dir="${env.WORKSPACE}/common/branding/${brand}">
+				<arg line="update" />
+				<arg value="lib-project" />
+				<arg value="-p" />
+				<arg value="." />
+				<arg value="-t" />
+				<arg value="${target-android}" />
+			</exec>
+		  </then>
+		</ac:if>
+
+		<echo>RA Base</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/ra_base">
+			<arg line="update" />
+			<arg value="lib-project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<echo>RA Configurator</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/ra_configurator">
+			<arg line="update" />
+			<arg value="lib-project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<echo>RA Testing Helper</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/ra/shared/testing_helper">
+			<arg line="update" />
+			<arg value="lib-project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+
+		<echo>RA Test Common</echo>
+		<exec executable="${env.ANDROID_HOME}/tools/android" failonerror="true"
+			dir="${env.WORKSPACE}/common/libraries/test-common">
+			<arg line="update" />
+			<arg value="project" />
+			<arg value="-p" />
+			<arg value="." />
+		</exec>
+	</target>
+
+	<target name="do-release-build" depends="init-product, gen-properties">
+		<ant antfile="${product.build.file}" target="add-product-components" />
+		<ant antfile="${product.build.file}" target="clean" />
+		<ant antfile="${product.build.file}" target="apply-version" />
+		<ant antfile="${product.build.file}" target="release" />
+		<ant antfile="${product.build.file}" target="rename-apks" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+		<ant antfile="${product.build.file}" target="-clean-properties" />
+	</target>
+
+	<target name="install-release-build" depends="init-product, gen-properties">
+		<ant antfile="${product.build.file}" target="add-product-components" />
+		<ant antfile="${product.build.file}" target="clean" />
+		<ant antfile="${product.build.file}" target="release" />
+		<ant antfile="${product.build.file}" target="installr" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+		<ant antfile="${product.build.file}" target="-clean-properties" />
+	</target>
+
+	<target name="do-debug-build" depends="init-product, gen-properties">
+		<ant antfile="${product.build.file}" target="add-product-components-and-testing-helper" />
+		<ant antfile="${product.build.file}" target="clean" />
+		<ant antfile="${product.build.file}" target="debug" />
+		<ant antfile="${product.build.file}" target="reset-product-components" />
+		<ant antfile="${product.build.file}" target="-clean-properties" />
+	</target>
+
+	<target name="install-debug-build" depends="do-debug-build">
+		<ant antfile="${product.build.file}" target="installd" />
+	</target>
+
+	<target name="uninstall-asset-gatherer">
+
+		<echo>Uninstalling com.dashwire.asset.gatherer.${oem}</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="rm" />
+			<arg value="/system/app/assetgatherer*" />
+		</exec>
+		<exec executable="adb" failonerror="false">
+			<arg value="uninstall" />
+			<arg value="com.dashwire.asset.gatherer.${oem}" />
+		</exec>
+
+	</target>
+
+	<target name="uninstall-all" depends="init-product, -update-test-projects">
+
+		<echo>adb remount</echo>
+		<exec executable="adb" failonerror="true">
+			<arg value="shell" />
+			<arg value="mount" />
+			<arg value="-o" />
+			<arg value="rw,remount" />
+			<arg value="/dev/block/stl9" />
+			<arg value="/system" />
+		</exec>
+
+		<echo>removing all ra*.apk</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="rm" />
+			<arg value="/system/app/ra_*.apk" />
+		</exec>
+
+		<echo>removing all r2gc*.apk</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="rm" />
+			<arg value="/system/app/r2gc*" />
+		</exec>
+
+		<echo>Uninstalling com.dashwire.config</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="shell" />
+			<arg value="rm" />
+			<arg value="/system/app/ready2go.apk" />
+		</exec>
+		<exec executable="adb" failonerror="false">
+			<arg value="uninstall" />
+			<arg value="com.dashwire.config" />
+		</exec>
+
+		<echo>Uninstalling com.dashwire.features.testing</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="uninstall" />
+			<arg value="com.dashwire.features.testing" />
+		</exec>
+
+		<echo>Uninstalling com.dashwire.features.testing.fctnl.test</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="uninstall" />
+			<arg value="com.dashwire.features.testing.fctnl.test" />
+		</exec>
+
+		<echo>Uninstalling com.dashwire.config.intg.test</echo>
+		<exec executable="adb" failonerror="false">
+			<arg value="uninstall" />
+			<arg value="com.dashwire.config.intg.test" />
+		</exec>
+
+		<ant antfile="${product.build.file}" target="uninstall-asset-gatherer" />
+
+		<ac:for list="${components.list}" param="each.component">
+			<sequential>
+				<echo>Uninstall Component : @{each.component}</echo>
+				<ant antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/main/build.xml"
+					target="uninstall" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/main"
+					inheritAll="false" />
+				<ant
+					antfile="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test/build.xml"
+					target="uninstall" dir="${env.WORKSPACE}/ra/${@{each.component}.path}/fctnl_test"
+					inheritAll="false" />
+			</sequential>
+		</ac:for>
+
+		<echo>Uninstalling product ${product}</echo>
+		<ant antfile="${product.build.file}" target="uninstall" />
+	</target>
+	
+	<!-- resets project.properties back to its original state in source to keep remove multi-build pollution -->
+	<!-- creates a copy of the file before reverting it however called project.properties.last -->
+	<target name="-clean-properties">
+		<copy file="project.properties" tofile="project.properties.last"/>		
+		<exec executable="git" failonerror="true"
+			dir="${env.WORKSPACE}/${product.dir}">
+			<arg line="checkout" />
+			<arg value="--" />
+			<arg value="project.properties" />
+		</exec>
+	</target>
+
+</project>

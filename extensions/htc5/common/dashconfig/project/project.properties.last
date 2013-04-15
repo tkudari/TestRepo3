@@ -1,0 +1,22 @@
+#Fri, 12 Apr 2013 10:39:36 -0700
+
+manifestmerger.enabled=true
+proguard.config=proguard-project.txt
+# Project target.
+target=android-17
+
+android.library.reference.1=../../../../../common/branding/att
+
+android.library.reference.2=../../../../../common/dashconfig/project
+
+android.library.reference.3=../../../../../ra/shared/testing_helper
+
+android.library.reference.4=../../../../../ra/wallpaper/htc/main
+
+android.library.reference.5=../../../../../ra/ringtones/android/main
+
+android.library.reference.6=../../../../../ra/wifi/android/main
+
+android.library.reference.7=../../../../../ra/accounts/android/main
+
+android.library.reference.8=../../../../../ra/contacts/android/main

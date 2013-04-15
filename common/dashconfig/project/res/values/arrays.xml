@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="configure_url_override_values">
+    </string-array>
+    <string-array name="market_assets" translatable="false">
+        <!-- comma-separated values of {packageName},{majorVersion},{versionCode} -->
+        <item>ca.jamdat.flight.scrabblefree:1:112057</item>
+        <item>com.att.android.JustUs:1:6</item>
+        <item>com.att.android.mobile.attmessages:1:13</item>
+        <item>com.aws.android:1:2000500432</item>
+        <item>com.espn.score_center:1:142</item>
+        <item>com.facebook.katana:1:5914</item>
+        <item>com.google.android.stardroid:1:1112</item>
+        <item>com.lookout:1:8976</item>
+        <item>com.openfeint.spotlightwla:1:12</item>
+        <item>com.pandora.android:1:29</item>
+        <item>com.rovio.angrybirds:1:1630</item>
+        <item>com.shazam.android:1:73046</item>
+        <item>com.tripadvisor.tripadvisor:1:16</item>
+        <item>com.uievolution.client.rbt:1:6</item>
+        <item>com.zynga.words:1:4611</item>
+    </string-array>
+    <string-array name="crash_report_form_keys">
+        <item>dHNvYm9YUEVHczg4dm1uQ254czhidVE6MQ</item>
+        <item>dGgtUTVHZ2tEeGZuNWNFdVNyaEo5SWc6MQ</item>
+        <item>dENuRlZtcmdNbUxTcUFpWVNraXBiNHc6MQ</item>
+        <item>dDVUanR3ZzBLdDY1T0czUWRPZThXNnc6MQ</item>
+        <item>dHJzZG5tTXp2OVdHNndGaExOZFRlTFE6MQ</item>
+        <item>dGtBbTgxclhjbVZ2M2JSVHNOSGRjWWc6MQ</item>
+        <item>dEVhcVhWRlFVeUJ0d2ZaY1Z2MngwM3c6MQ</item>
+        <item>dHQyVWVSd2pnZHRtSmdoYkp5bWNVLUE6MQ</item>
+        <item>dFFTaEdQcFZEU3VNVnlRYmUyemxvQWc6MQ</item>
+        <item>dE9wVmZaMmpQcTJENFdTRU5BdUR3ZWc6MQ</item>
+        <item>dEhVUk5MR2pQRExBaVQ2R3Y4RF9PUEE6MQ</item>
+        <item>dEs5NmFjUUtQNllZSFZYYXZfVFdvc1E6MQ</item>
+    </string-array>
+</resources>

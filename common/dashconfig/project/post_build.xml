@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="r2gc_common-post_build">
+
+    <property name="external.libs.dir" value="${robolectric.sample.external.libs.dir}"/>
+    <property name="jar.libs.dir" value="${robolectric.sample.external.libs.dir}"/>
+    <property name="test.absolute.dir" location="${test.dir}"/>
+    <property name="out.test-classes.dir" value="${out.absolute.dir}/testClasses"/>
+    <property name="out.test-classes.absolute.dir" value="${out.test-classes.dir}"/>
+    <property name="test.external.libs.absolute.dir" location="${test.external.libs.dir}"/>
+    <property name="publish.dir" location="${out.absolute.dir}/publish"/>
+
+    <property environment="env"/>
+    <condition property="build.number" value="${env.BUILD_NUMBER}" else="unknown">
+        <isset property="env.BUILD_NUMBER"/>
+    </condition>
+
+    <target name="init.test">
+        <property name="android.library.reference.1" location="${env.WORKSPACE}/common/libraries/test-common"/>
+    </target>
+
+    <target name="-environment.setup">
+        <property name="build.target" value="debug" />
+    </target>
+
+    <target name="compile.tests.only" depends="-environment.setup"
+            description="compile test classes" unless="skip.tests">
+        <mkdir dir="${out.test-classes.absolute.dir}"/>
+
+        <javac encoding="ascii" source="1.6" target="1.6" debug="true" extdirs=""
+               destdir="${out.test-classes.absolute.dir}"
+               includeantruntime="false"
+               verbose="${verbose}">
+            <src path="${test.absolute.dir}"/>
+            <classpath>
+                <path refid="robolectric.class.path"/>
+                <pathelement path="${env.WORKSPACE}/common/dashconfig/project/bin/classes.jar"/>
+                <pathelement path="${env.WORKSPACE}/common/libraries/test-common/bin/classes.jar"/>
+                <pathelement path="${out.classes.absolute.dir}"/>
+                <path refid="project.target.class.path"/>
+                <fileset dir="${test.external.libs.absolute.dir}" includes="*.jar"/>
+                <fileset dir="${robolectric.sample.external.libs.dir}" includes="*.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="compile.tests" depends="-environment.setup, -compile, test-common-jar, compile.tests.only"
+            description="compile module source; test classes" unless="skip.tests" />
+
+    <target name="clean" description="cleanup module test-common-clean">
+        <!-- dunno how to depend on android's clean, so subant instead -->
+        <subant inheritall="true" buildpath="${sdk.dir}/tools/ant" antfile="build.xml" failonerror="true">
+            <target name="clean"/>
+        </subant>
+        <delete dir="${out.test-classes.absolute.dir}"/>
+        <delete dir="${tmp.dir}"/>
+        <delete file="${basedir}/tmp/cached-robolectric-classes.jar"/>
+        <delete dir="${basedir}/out"/>
+    </target>
+
+    <path id="robolectric.class.path">
+        <fileset dir="${test.external.libs.absolute.dir}">
+            <include name="junit-4.10.jar" />
+            <include name="robolectric-0.9.4-all.jar" />
+            <include name="httpclient-4.0-tests.jar" />
+            <include name="mockito-all-1.9.5.jar" />
+        </fileset>
+    </path>
+
+    <path id="robotest.class.path">
+        <path refid="robolectric.class.path" />
+        <pathelement path="${env.WORKSPACE}/common/dashconfig/project/bin/classes.jar"/>
+        <pathelement path="${env.WORKSPACE}/common/libraries/test-common/bin/classes.jar"/>
+        <pathelement path="${out.classes.absolute.dir}"/>
+        <pathelement path="${out.test-classes.absolute.dir}"/>
+        <path refid="project.target.class.path"/>
+    </path>
+
+    <target name="robotest.run" depends="-environment.setup" description="test all (no compile)">
+        <mkdir dir="${basedir}/out/reports/tests"/>
+        <junit printsummary="withOutAndErr" showoutput="true" failureproperty="junit.failure">
+            <formatter type="plain"/>
+            <formatter type="xml"/>
+            <batchtest todir="${basedir}/out/reports/tests">
+                <fileset dir="${test.absolute.dir}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+            <classpath>
+                <path refid="robotest.class.path" />
+            </classpath>
+        </junit>
+        <junitreport todir="./out/reports/tests">
+            <fileset dir="./out/reports/tests">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="./out/reports/html"/>
+        </junitreport>
+        <fail if="junit.failure" message="Unit test(s) failed.  See reports!"/>
+    </target>
+
+    <target name="robotest" depends="compile.tests, robotest.run" description="test all" />
+
+    <target name="test-common-jar">
+        <ant antfile="${env.WORKSPACE}/common/libraries/test-common/build.xml" target="release"/>
+    </target>
+
+    <target name="test-common-clean">
+        <ant antfile="${env.WORKSPACE}/common/libraries/test-common/build.xml" target="clean"/>
+    </target>
+
+</project>

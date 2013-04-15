@@ -1,0 +1,30 @@
+{
+    "pantech":
+    [
+		{
+            "type": "DefaultWidgetsShortcuts",
+			"favorites_uri":"content://com.android.launcher.settings/favorites"
+		},
+        {
+            "type": "WallpaperByApk",
+            "uri_base":"android.resource://com.pantech.wallpaperchooser/drawable/",
+            "apk_location":"/system/app/WallpaperChooser.apk"
+        },
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/media/audio/ringtones/sky_ringtone/"
+		},
+		{
+			"type": "Audio",
+            "output":"notifications",
+			"uri":"/system/media/audio/notifications/"
+		},
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "AndroidWidgets"
+        }
+	]
+}

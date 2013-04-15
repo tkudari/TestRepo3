@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/relativeLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white">
+	<LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- Top Bar -->
+		<include layout="@layout/top_bar_orange" />
+
+		<!-- Title Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout2"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp">
+			<TextView
+				style="@style/global_title_text_orange"
+				android:id="@+id/need_help_finished_steps_ques"
+				android:text="@string/need_help_finished_steps_ques"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Body Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp"
+			android:orientation="vertical">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/need_help_finished_steps_ans"
+				android:text="@string/need_help_finished_steps_ans"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="center|left"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+
+		<!-- Title Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout2"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp">
+			<TextView
+				style="@style/global_title_text_orange"
+				android:id="@+id/need_help_configured_online_ques"
+				android:text="@string/need_help_configured_online_ques"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Body Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp"
+			android:orientation="vertical">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/need_help_configured_online_ans"
+				android:text="@string/need_help_configured_online_ans"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="center|left"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+	</LinearLayout>
+
+	<!-- Button Layout -->
+	<LinearLayout
+		android:id="@+id/button_layout"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@drawable/wizard_bottom"
+		android:layout_alignParentBottom="true"
+		android:paddingTop="5dp"
+		android:paddingBottom="2dp"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp">
+		<!-- Cancel Button -->
+		<Button
+			android:text="@string/button_back"
+			android:id="@+id/back_button"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5"
+			style="@style/button_text_black">
+		</Button>
+		<ImageView
+			android:id="@+id/dummy_image3"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5">
+		</ImageView>
+	</LinearLayout>
+</RelativeLayout>

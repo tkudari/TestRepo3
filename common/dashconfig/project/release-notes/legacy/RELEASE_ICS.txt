@@ -1,0 +1,58 @@
+== Release Notes
+
+== 0.9.9.1010 (HTC Congressional)
+* HTC Congressional: Fix to add widgets and shortcuts to home screen on first boot.
+
+== 0.9.8 (Samsung Skyrocket ICS)
+* Samsung: Hotmail works
+* Known issues: Exchange may not works
+
+== 0.9.7 (Samsung Skyrocket ICS)
+* Samsung: Gmail and Android Market works
+* Known issues: Exchange/Hotmail not works
+
+== 0.9.4 (Samsung Skyrocket ICS)
+* Samsung: option-b reboot notification, social networks
+
+== 0.9.3 (Samsung Skyrocket ICS)
+* Samsung: Google Login issue, Yahoo, att, aol send issue, Crash on first boot in Need Help Screen, Scroll view on spanish Learn more screen
+* Known issues: Social networks not working, option-b reboot notificaiton not shows on home screen
+
+== 0.9.2 (Samsung Skyrocket ICS)
+* Samsung: Yahoo, AOL, ATT sync inbox - Spanish Google Location screen should work, Connected Screen fixed.
+* Known issues: Gmail not sync, Hotmail/Other/Exchange not works, Login/Need Help screen crashes on first boot.
+
+== 0.9.1 (Samsung Skyrocket ICS)
+* Samsung: Following works Gmail, All Email Accounts other than Exchange.
+* Known issues: App not getting installed from Android Market 
+
+== 0.9.0 (HTC Congressional)
+* Congressional: Removed code for launch on first boot
+
+== 0.8.9 (Samsung Skyrocket ICS)
+* Initial beta build for internal testing. Following works - Contacts, Widgets and Shortcuts, Bookmarks, Ringtones, Notifications, Install Applications and Wifi.
+* Known issues: Gmail, Exchange, Hotmail, Yahoo, ATT, AOL and Other email are not working.
+
+== 0.8.8 (Samsung Galaxy S2)
+* Initial beta build for internal testing. Following works - Gmail, Contacts, Widgets and Shortcuts, Bookmarks, Ringtones, Notifications, Install Applications and Wifi.
+* Known issues: Exchange, Hotmail, Yahoo, ATT, AOL and Other email are not working.
+
+== 0.8.0 - 0.8.7 (HTC Congressional)
+* Congressional: Fixed Gmail  Sync issue and apps installation issue 
+
+== 0.8.0 - 0.8.6 (HTC Congressional)
+* Congressional: Internal builds for testing "loading indicators persist", "shortcuts not created", "multiple emails not created", "scenario 2 crashes" 
+                
+== 0.7.9 (HTC Congressional)
+* Congressional: Fixed email and widget installation. 
+* Known issues: Exchange email account not working, 
+                The loading indicators persist and user is unable to advance to next screen.
+
+== 0.7.8 (HTC Congressional)
+* Congressional: Fixed google account setup. 
+* Known issues: Email not working on latest verion of ROM. 
+                If there is only one configuration element, it does not advance to completion page.
+
+== 0.7.7 (HTC Congressional)
+* Congressional: Initial Alpha release with contacts, wallpaper, apps, bookmarks, widgets, shortcuts ringtones and notifications working. Email and Wifi not working.
+

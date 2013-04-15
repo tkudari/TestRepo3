@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- COMMON -->
+    <color name="background_color">#000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey">#666666</color>
+
+    <!-- ATT -->
+    <color name="red">#880430</color>
+    <color name="utlra_light_grey">#98AFC7</color>
+    <color name="dark_grey">#646363</color>
+    <color name="green">#B4D233</color>
+    <color name="light_blue">#4280B9</color>
+    <color name="blue">#45a7d9</color>
+    <color name="orange">#FF6600</color>
+
+    <!-- DASHWIRE -->
+    <color name="bright_green">#AEC834</color>
+    <color name="sky_blue">#53BDE7</color>
+    <color name="bright_red">#EF5441</color>
+    <color name="light_grey">#B3B3B3</color>
+    <color name="dark_blue">#144C7C</color>
+    <color name="light_orange">#E57E3E</color>
+    <color name="yellow">#FBE446</color>
+    <color name="light_purple">#B960D1</color>
+    <color name="lightest_grey">#E6E7E8</color>
+
+</resources>

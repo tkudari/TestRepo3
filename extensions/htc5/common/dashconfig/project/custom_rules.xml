@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules_r2gc-htc5">
+    <!--
+        Common tasks defined for apk testing
+    -->
+    <import file="${env.WORKSPACE}/common/dashconfig/project/custom_rules.xml" />
+	
+</project>

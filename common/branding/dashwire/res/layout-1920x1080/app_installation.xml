@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- Title Layout -->
+
+    <LinearLayout
+        android:id="@+id/RelativeLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/app_installation_title"
+            style="@style/global_title_text_orange_large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:text="@string/app_installation_title"
+            android:textColor="@color/bright_green" >
+
+        </TextView>
+
+        <Button
+            android:id="@+id/stopAllButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@color/sky_blue"
+            android:gravity="center|center_vertical"
+            android:text="@string/button_stop_all"
+            android:textColor="@color/white"
+            android:textSize="16sp" >
+
+        </Button>
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

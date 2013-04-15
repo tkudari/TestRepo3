@@ -1,0 +1,5 @@
+== LG Release Notes
+1033 - Initial alpha build
+1040 - Beta build. Other than Email account all features should work.
+1041 - Added sharedUserId to widget_service.
+1047 - Email, Widget, Shortcut fixes

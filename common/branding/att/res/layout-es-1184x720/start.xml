@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/relativeLayout2"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white">
+	<LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- Top Bar -->
+		<include layout="@layout/top_bar_orange" />
+
+		<!-- Title Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3"
+			android:layout_width="match_parent"
+			android:paddingTop="10dp"
+			android:gravity="left">
+			<TextView
+				style="@style/global_title_text_orange"
+				android:id="@+id/title"
+				android:text="@string/start_title"
+				android:gravity="left"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingTop="10dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Body Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout4"
+			android:layout_width="match_parent"
+			android:paddingTop="10dp"
+			android:orientation="vertical">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/body"
+				android:text="@string/start_body"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="center|left"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+			<TextView
+				style="@style/global_link_text_blue"
+				android:id="@+id/learn_more_link"
+				android:text="@string/start_learn_more_link"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="left"
+				android:paddingTop="10dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+	</LinearLayout>
+
+	<!-- Graphic Layout -->
+	<LinearLayout
+		android:id="@+id/linearLayout5"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_alignParentBottom="true"
+		android:orientation="vertical">
+
+		<!-- Continue Button Layout -->
+		<LinearLayout
+			android:id="@+id/linearLayout6"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:background="@drawable/welcome"
+			android:paddingTop="20dp"
+			android:paddingBottom="20dp">
+		</LinearLayout>
+	    <LinearLayout
+			android:id="@+id/get_started_linearLayout"
+			android:layout_width="match_parent"
+			android:background="@color/green"
+			android:gravity="center" android:layout_height="90dp">
+			<ImageView
+			android:src="@drawable/get_started_att"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:id="@+id/get_started_button">
+		</ImageView>
+		</LinearLayout>
+
+		<!-- Button Layout -->
+		<LinearLayout
+			android:id="@+id/button_layout"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:background="@drawable/wizard_bottom"
+			android:paddingTop="5dp"
+			android:paddingBottom="2dp"
+			android:paddingLeft="5dp"
+			android:paddingRight="5dp">
+			<!-- Cancel Button -->
+			<Button
+				android:text="@string/button_cancel"
+				android:id="@+id/cancel_button"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight=".5"
+				style="@style/button_text_black">
+			</Button>
+			<!-- Select Language Button -->
+			<Button
+				android:text="@string/button_select_lang"
+				android:id="@+id/select_lang_button"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight=".5"
+				style="@style/button_text_black">
+			</Button>
+		</LinearLayout>
+	</LinearLayout>
+
+</RelativeLayout>

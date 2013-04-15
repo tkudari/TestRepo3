@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dashwire Get Started</string>
+    <string name="get_started_button">Get Started</string>
+	<string name="top_bar_title">Dashwire Get Started</string>
+    <string name="start_title">Fast &amp; Easy Phone Set-Up</string>
+    <string name="start_body">Easily set-up your phone from your computer and Dashwire will do the rest. Click \'Get Started\' to continue.</string>
+    <string name="start_learn_more_link">Learn more</string>
+    <string name="about_title">What is Dashwire Get Started?</string>
+    <string name="about_body">Get Started is a free service from Dashwire that helps you to easily set-up and personalize your phone from the comfort of your web browser - no cables required. \n\nWith Dashwire Get Started, it\'s easy to set-up your e-mail accounts, import your contacts, set your wallpaper, personalize your home screens, install free applications, set your ringtones, select bookmarks for your device web browser, and even set up your Wi-Fi.</string>
+    <string name="about_next_link">Click Next to get started!</string>
+    <string name="google_location_title">Use Google Location</string>
+    <string name="google_location_body">Google\'s location server provides applications with your approximate location without using GPS. \n\nYou can disable these features in Settings, under Location &amp; Security</string>
+    <string name="google_location_check_text">Allow Google\'s location service to collect anonymous location data. Collection will occur even when no applications are running.</string>
+    <string name="display_code_title_s1">Get Started On Your Computer</string>
+    <string name="display_code_title_s3">Get Started On Your Computer</string>
+    <string name="display_code_body_s1">Go to the following URL on your computer to start configuring your phone. </string>
+    <string name="display_code_body_s3">Go to the following URL on your computer web browser to start personalizing your phone. </string>
+    <string name="display_code_goto_label">On your computer, go to:</string>
+    <string name="display_code_goto_link">dashwire-start.com</string>
+    <string name="display_code_enter_code_label">Enter code:</string>
+    <string name="display_code_enter_code">X X X X X X</string>
+    <string name="display_code_need_help_link">Need help?</string>
+    <string name="check_connection_title">Get Started On Your Computer</string>
+    <string name="check_connection_body">Go to the following link on your computer web browser to start personalizing your phone. </string>
+    <string name="check_conn_need_help_title">We were unable to connect to your phone!</string>
+    <string name="check_conn_need_help_body">This requires a data connection to function. If you already have your SIM card in and have not yet established a data connection, then please try connecting to Wi-Fi. </string>
+    <string name="check_conn_need_help_link">Need help?</string>
+    <string name="need_help_finished_steps_ques">I just finished the steps on the web and nothing happened on my phone</string>
+    <string name="need_help_finished_steps_ans">Completing the Dashwire Get Started on your computer web browser should automatically result in your setup file being sent to your phone. If this did not occur, Click here to try again</string>
+    <string name="need_help_configured_online_ques">I previously set up online and already have an email and password</string>
+    <string name="need_help_configured_online_ans">Click here to login and download your settings.</string>
+    <string name="need_help_click_here_link">Click here</string>
+    <string name="connected_title">Waiting For You \nTo Complete Set-Up</string>
+    <string name="connected_body1">Finish personalizing your phone on your computer, and as soon as you\'re done, your phone will automatically update with what you\'ve set-up online.</string>
+    <string name="connected_body2">Already finished and this screen is not updating? Click here.</string>
+    <string name="connected_click_here_link">Click here.</string>
+    <string name="completed_title">Congratulations, \nYour Phone is ready!</string>
+    <string name="completed_body">Your phone setup is complete. Any applications you selected will download when you click Finish and will automatically install when complete.</string>
+    <string name="completed_congratulations">Congratulations!</string>
+    <string name="checked_device_image_desc">Device image with checkmark.</string>
+    <string name="connectivity_error_title">We were unable to establish a connection</string>
+    <string name="connectivity_error_body">You have no data connection. Please try again, or press cancel to quit.</string>
+    <string name="error_image_desc">Error alert icon.</string>
+    <string name="not_connected_error_title">We were unable to connect to your phone</string>
+    <string name="not_connected_error_body">Please try again, or press cancel to quit.</string>
+    <string name="timeout_error_title">Your session has timed out</string>
+    <string name="timeout_error_body">Please try again, or press cancel to quit.</string>
+    <string name="code_expired_title">Your code has expired</string>
+    <string name="code_expired_body">Please try again.</string>
+    <string name="downloading_config_error_title">We had a problem downloading your setup</string>
+    <string name="downloading_config_error_body">Please try again, or press cancel to quit.</string>
+    <string name="diff_phone_confirm_title">This phone is different from the one you set up online!</string>
+    <string name="diff_phone_confirm_body">The settings you have set up online will not work on this phone.\n\nWe see your phone is a %1$s. Please visit Dashwire Get Started again and choose %1$s when selecting your device online.\n\nThank you. Please press Cancel to exit.</string>
+    <string name="configuration_title">Setup is in progress</string>
+    <string name="app_installation_title">Installing</string>
+    <string name="login_title">Are you already setup with Dashwire Get Started?</string>
+    <string name="login_body">Enter the email address and password you used when completing Dashwire Get Started on the web to download your personalized settings</string>
+    <string name="login_username_label">Email</string>
+    <string name="login_username">email@email.com</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_password">XXXXXXXX</string>
+    <string name="login_forgot_link">Forgot email and/or password?</string>
+    <string name="login_invalid_credential">Invalid Credentials\&#8230;</string>
+    <string name="login_system_error">System Error\&#8230;</string>
+    <string name="stop_all_confirm">Are you sure you want to stop all Application downloads?</string>
+    <string name="forgot_password_title">Forgot email and/or password?</string>
+    <string name="forgot_password_body">Go to Website: \nhttp://dashwire-start.com/</string>
+    
+    <string name="progress_dialog_session">Creating session, Please wait\&#8230;</string>
+    <string name="progress_dialog_authentication">Authentication is in progress, please wait\&#8230;</string>
+    <string name="progress_dialog_status_check">Checking status, please wait\&#8230;</string>
+    <string name="progress_downloading_config">Downloading Setup, Please wait\&#8230;</string>
+    <string name="toast_connect_server">Trying again to connect the server\&#8230;</string>
+    <string name="progress_dialog_google_location">Updating Google Location, Please wait\&#8230;</string>
+    
+    <string name="button_stop_all">Stop All</string>
+    <string name="button_back">Back</string>
+    <string name="button_next">Next</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_try_again">Try Again</string>
+    <string name="button_finish">Finish</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_select_lang">Select Language</string>
+    
+    <string name="notification_ins_app_title">Installing Applications</string>
+    <string name="notification_ins_app_body">Downloading</string>
+    <string name="notification_ins_app_body_complete">Installed All Apps</string>
+    <string name="notification_config_phone_title">Set up your phone</string>
+    <string name="notification_config_phone_message">Set up your phone online</string>
+    <string name="notification_config_phone_body">Click to get started</string>
+    <string name="notification_setup_google_title">Set-up your Google Account</string>
+    <string name="notification_setup_google_body">Click here to add or create an account</string>
+    <string name="notification_social_hub_status_title">Social Login Failed</string>
+    <string name="notification_social_login_fail_title">Social Login Failed</string>
+    <string name="notification_social_login_fail_body">Click here to re-enter your credentials</string>
+    <string name="notification_social_conn_error_title">Unable to Connect</string>
+    <string name="notification_social_conn_error_body">Check your data connection</string>
+    <string name="notification_restart_device_title">Please Restart Your Phone</string>
+    <string name="notification_restart_device_body">This will complete the set-up process</string>
+    
+    <string name="app_installing">Installing</string>
+    <string name="app_installed">Installed</string>
+    
+    <string name="lang_selection_title">Select Language</string>
+    
+    <string name="uri_config">/config</string>
+    <string name="uri_sessions">/sessions</string>
+    
+    <string name="res_accounts">Google Accounts</string>
+    <string name="res_emails">Email Accounts</string>
+    <string name="res_contacts">Contacts</string>
+    <string name="res_bookmarks">Bookmarks</string>
+    <string name="res_shortcuts">Shortcuts</string>
+    <string name="res_feeds">Feeds</string>
+    <string name="res_wallpaper">Wallpaper</string>
+    <string name="res_ringtones">Ringtones</string>
+    <string name="res_wifi">Wi-Fi</string>
+    <string name="res_social_networks">Social Networks</string>
+    <string name="res_exchange_accounts">Exchange Accounts</string>
+    <string name="res_easy">Easy Experience</string>
+    
+    <string name="permission_label">Modify email, contacts, shortcuts and widgets</string>
+    <string name="permission_description">
+        Allows the application to modify email, contacts, shortcuts, wallpapers, ringtones, notifications and installed widgets.
+    </string>
+    <string name="permission_description_SEND_HOMESCREEN_RESULT">
+        Allows the application to receive results about the setup of Widgets, Shortcuts and Wallpapers
+	</string>
+
+    <string name="content_description__error_icon">Image icon of exclamation point</string>
+    
+    <string name="main_image_desc">Dashwire Logo</string>
+
+</resources>

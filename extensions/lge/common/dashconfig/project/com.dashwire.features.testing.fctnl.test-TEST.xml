@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" package="com.dashwire.features.testing.fctnl.test" tests="8" time="76.269" timestamp="2013-01-28T20:21:43">
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testAllNotifications" time="15.074" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testAllRingtones" time="27.051" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testAllWallpapers" time="26.045" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testAndroidTestCaseSetupProperly" time="0.006" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testIncorrectRingtone" time="2.029" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testIncorrectWallpaper" time="2.02" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testingNegativeWifi" time="2.025" />
+    <testcase classname="com.dashwire.features.testing.fctnl.test.TestingAllFeatures2Test" name="testingPositiveWifi" time="2.019" />
+    <properties />
+    <system-out />
+    <system-err />
+  </testsuite>
+</testsuites>

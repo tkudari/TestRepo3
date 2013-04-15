@@ -1,0 +1,39 @@
+{
+	"htc":
+	[
+		{
+            "type": "DefaultWidgetsShortcuts",
+			"favorites_uri":"content://com.htc.launcher.settings/favorites"
+		},
+		{
+			"type":"WallpaperByXMLQuery",
+			"xml_location":"file:///system/customize/MNS/default.xml",
+			"xml_query":"//category[@name='application']/module[@name='Launcher']/function[@name='extra_wallpapers']/set/item[@name='image']/text()",
+			"directory":"/system/customize/resource/"
+		},
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/media/audio/ringtones/"
+		},
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/customize/resource/"
+		},
+		{
+			"type": "Audio",
+            "output":"notifications",
+			"uri":"/system/media/audio/notifications/"
+		},
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "AndroidWidgetsReleaseVersion"
+        },
+        {
+            "type": "HTCWidgets"
+        }
+	]
+}

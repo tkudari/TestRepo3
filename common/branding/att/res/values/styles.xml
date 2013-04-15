@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="global_title_text">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textColor">@color/green</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+
+	<style name="global_title_text_orange">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textColor">@color/orange</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+    <style name="global_title_text_orange_large">
+		<item name="android:textSize">24sp</item>
+		<item name="android:textColor">@color/orange</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_body_text">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+		<style name="global_body_text_grey">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+    <style name="global_body_text_grey_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_error_message_text">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">@color/red</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_error_msg_text_red">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/red</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_error_msg_text_red_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/red</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+    <style name="button_text">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:gravity">center</item>
+	</style>
+	
+	<style name="button_text_black">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">center</item>
+	</style>
+	
+	<style name="button_text_black_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:gravity">center</item>
+	</style>
+	
+	<style name="code_text">
+		<item name="android:textSize">32sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="code_text_grey">
+		<item name="android:textSize">26sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="code_text_grey_large">
+		<item name="android:textSize">28sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="url_text">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="url_text_grey">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="url_text_grey_large">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+    <style name="input_text">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="input_text_grey_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_label_text_white">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="global_label_text_white_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingBottom">5dip</item>
+	</style>
+	
+	<style name="top_bar_text">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	
+	<style name="top_bar_text_white_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	
+    <style name="global_link_text_blue">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/light_blue</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+    </style>
+    
+    <style name="global_link_text_blue_large">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/blue</item>
+		<item name="android:textStyle">normal</item>
+		<item name="android:paddingBottom">5dip</item>
+    </style>
+	
+	<style name="global_H2">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:paddingBottom">10dip</item>
+	</style>
+	
+	<style name="button_style">
+		<item name="android:textSize">@dimen/button_text</item>
+		<item name="android:textColor">@color/red</item>
+	</style>
+	
+	<style name="global_title_white">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+	</style>	
+
+</resources>

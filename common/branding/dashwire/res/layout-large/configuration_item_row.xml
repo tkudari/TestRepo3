@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/LinearLayout" 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:orientation="vertical" 
+	android:padding="10dp"
+	android:background="@color/white">
+	<RelativeLayout 
+    	android:id="@+id/relativeLayout2" 
+    	android:layout_height="30dp" 
+    	android:layout_width="fill_parent">
+        <ImageView 
+			android:id="@+id/dummy_image1" 
+			android:layout_width="20dp" 
+			android:layout_height="30dp"
+			android:layout_alignParentLeft="true">
+		</ImageView>
+		<TextView 
+			style="@style/global_body_text_grey_large"
+			android:id="@+id/configuration_item_text" 
+			android:text="Item" 
+			android:layout_height="30dp"
+			android:layout_width="wrap_content"
+			android:layout_toRightOf="@+id/dummy_image1" android:gravity="bottom">
+		</TextView>
+	    <ImageView 
+			android:id="@+id/dummy_image2" 
+			android:layout_width="20dp" 
+			android:layout_height="30dp"
+			android:layout_alignParentRight="true">
+		</ImageView>
+	    <ImageView android:src="@drawable/check_button" 
+			android:id="@+id/configuration_item_icon" 
+			android:layout_width="30dp" 
+			android:layout_height="30dp"
+			android:layout_toLeftOf="@+id/dummy_image2">
+		</ImageView>
+		<ProgressBar 
+			android:id="@+id/configuration_item_progress_bar" 
+			android:layout_height="30dp"
+			android:layout_width="30dp"  
+			android:layout_toLeftOf="@+id/dummy_image2">
+		</ProgressBar>	
+	</RelativeLayout>
+</LinearLayout>

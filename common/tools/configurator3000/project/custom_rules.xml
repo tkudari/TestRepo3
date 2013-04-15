@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="configurator3000_custom">
+
+    <target name="install"
+            description="Installs the newly build package. Must be used in conjunction with a build target
+                            (debug/release/instrument). If the application was previously installed, the application
+                            is reinstalled if the signature matches." >
+        <!-- only do install if *not* a library project -->
+        <echo>out.final.file = ${out.final.file}</echo>
+        <do-only-if-not-library elseText="Library project: nothing to install!" >
+            <if>
+                <condition>
+                    
+                    <isset property="out.final.file" />
+                </condition>
+                <then>
+                    <if>
+                        <condition>
+                            <resourceexists>
+                                <file file="${out.final.file}"/>
+                            </resourceexists>
+                        </condition>
+                        <then>
+                            <echo level="info">Installing ${out.final.file} onto /system/app...</echo>
+                            <exec executable="${adb}" failonerror="true">
+                                <arg line="${adb.device.arg}" />
+                                <arg value="shell" />
+                                <arg value="mount" />
+                                <arg value="-o"/>
+                                <arg value="rw,remount"/>
+                                <arg value="/dev/block/stl9"/>
+                                <arg value="/system"/>
+                            </exec>
+                            <exec executable="adb" failonerror="true">
+                                <arg value="shell" />
+                                <arg value="rm" />
+                                <arg value="/system/app/${ant.project.name}-debug.apk"/>
+                            </exec>
+                            <exec executable="adb" failonerror="true">
+                                <arg value="shell" />
+                                <arg value="rm" />
+                                <arg value="/system/app/${ant.project.name}-release.apk"/>
+                            </exec>
+                            <exec executable="adb" failonerror="true">
+                                <arg value="shell" />
+                                <arg value="rm" />
+                                <arg value="/system/app/${ant.project.name}-instrumented.apk"/>
+                            </exec>
+                            <exec executable="${adb}" failonerror="true">
+                                <arg line="${adb.device.arg}" />
+                                <arg value="push" />
+                                <arg value="${out.final.file}" />
+                                <arg value="/system/app/"/>
+                            </exec>
+
+                            <!-- now install the tested project if applicable -->
+                            <!-- can't use project.is.test since the setup target might not have run -->
+                            <if>
+                                <condition>
+                                    <and>
+                                        <isset property="tested.project.dir" />
+                                        <not>
+                                            <isset property="dont.do.deps" />
+                                        </not>
+                                    </and>
+                                </condition>
+                                <then>
+                                    <property name="tested.project.absolute.dir" location="${tested.project.dir}" />
+
+                                    <!-- figure out which tested package to install based on emma.enabled -->
+                                    <condition property="tested.project.install.target" value="installi" else="installd">
+                                        <isset property="emma.enabled" />
+                                    </condition>
+                                    <subant target="${tested.project.install.target}" failonerror="true">
+                                        <fileset dir="${tested.project.absolute.dir}" includes="build.xml" />
+                                    </subant>
+                                </then>
+                            </if>
+                        </then>
+                        <else>
+                            <fail message="File ${out.final.file} does not exist." />
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <echo>Install file not specified.</echo>
+                    <echo></echo>
+                    <echo>'ant install' now requires the build target to be specified as well.</echo>
+                    <echo></echo>
+                    <echo></echo>
+                    <echo>    ant debug install</echo>
+                    <echo>    ant release install</echo>
+                    <echo>    ant instrument install</echo>
+                    <echo>This will build the given package and install it.</echo>
+                    <echo></echo>
+                    <echo>Alternatively, you can use</echo>
+                    <echo>    ant installd</echo>
+                    <echo>    ant installr</echo>
+                    <echo>    ant installi</echo>
+                    <echo>    ant installt</echo>
+                    <echo>to only install an existing package (this will not rebuild the package.)</echo>
+                    <fail />
+                </else>
+            </if>
+        </do-only-if-not-library>
+    </target>
+
+    <target name="uninstall">
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="mount" />
+            <arg value="-o"/>
+            <arg value="rw,remount"/>
+            <arg value="/dev/block/stl9"/>
+            <arg value="/system"/>
+        </exec>
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="rm" />
+            <arg value="/system/app/${ant.project.name}-debug.apk"/>
+        </exec>
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="rm" />
+            <arg value="/system/app/${ant.project.name}-release.apk"/>
+        </exec>
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="rm" />
+            <arg value="/system/app/${ant.project.name}-instrumented.apk"/>
+        </exec>
+    </target>
+</project>

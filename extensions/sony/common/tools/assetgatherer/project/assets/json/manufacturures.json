@@ -1,0 +1,48 @@
+{
+	"sony ericsson":
+	 [
+        {
+            "type": "WallpaperByFolder",
+            "directory":"/system/etc/customization/content/com/sonyericsson/wallpaperpicker/wallpapers/"
+        },
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/media/audio/ringtones/"
+		},
+		{
+			"type": "Audio",
+            "output":"notifications",
+			"uri":"/system/media/audio/notifications/"
+		},
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "AndroidWidgetsReleaseVersion"
+        }
+	],
+	"sony":
+	 [
+        {
+            "type": "WallpaperByFolder",
+            "directory":"/system/etc/customization/content/com/sonyericsson/wallpaperpicker/wallpapers/"
+        },
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/media/audio/ringtones/"
+		},
+		{
+			"type": "Audio",
+            "output":"notifications",
+			"uri":"/system/media/audio/notifications/"
+		},
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "AndroidWidgetsReleaseVersion"
+        }
+	]
+}

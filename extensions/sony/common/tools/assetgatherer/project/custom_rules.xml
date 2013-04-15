@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="asset_gatherer_sony_custom">
+   
+    <target name="getAssets">
+		<echo level="info">Getting Assets from Device from path /data/data/com.dashwire.asset.gatherer.${oem}</echo>
+        <mkdir dir="assets-from-device"/>
+        <exec executable="${adb}" failonerror="true" dir="assets-from-device">
+              <arg line="${adb.device.arg}" />
+              <arg value="pull" />
+              <arg value="/data/data/com.dashwire.asset.gatherer.${oem}"/>
+        </exec>
+    </target>
+   
+</project>

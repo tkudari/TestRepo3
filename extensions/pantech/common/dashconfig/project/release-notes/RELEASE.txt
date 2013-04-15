@@ -1,0 +1,2 @@
+== Motorola Release Notes
+== Fixed to close the R2G application if no features from Server.

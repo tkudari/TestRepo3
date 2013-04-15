@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="DEFAULT_CONFIG_URL">http://att.com/configure</string>
+    <string name="REFRESH_LAUNCHER_FLAG">refreshLaucher</string>
+    <string name="FAVORITES_URI">content://com.htc.launcher.settings/favorites</string>
+    <string name="GOOGLE_SETTINGS_PARTNER_URI">content://com.google.settings/partner</string>
+    <string name="SETTINGS_COMP">com.android.settings</string>
+    <string name="APP_DOWNLOAD_LOCATION">/data/data/com.dashwire.config/install</string> 
+    <string name="FIRST_BOOT_LAUNCHER">OtherWizard</string>
+    <string name="ESPANOL_COUNTRY">US</string>    
+</resources>

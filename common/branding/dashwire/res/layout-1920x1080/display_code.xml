@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <!-- Top Part -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- Top Bar -->
+
+        <include layout="@layout/top_bar_grey" />
+
+        <!-- Title Layout -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/display_code_title"
+                style="@style/global_title_text_orange"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text=""
+                android:textColor="@color/bright_green" >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/display_code_body"
+                style="@style/global_body_text_grey"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:paddingBottom="20dp"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/input_bg_linearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_blue"
+                android:orientation="vertical"
+                android:padding="20dp" >
+
+                <TextView
+                    android:id="@+id/goto_label"
+                    style="@style/global_label_text_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="@string/display_code_goto_label"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/goto_link"
+                    style="@style/url_text_grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_white"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="@string/display_code_goto_link"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/goto_label2"
+                    style="@style/global_label_text_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:paddingTop="5dp"
+                    android:text="@string/display_code_enter_code_label"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/code"
+                    style="@style/code_text_grey"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_white"
+                    android:gravity="center"
+                    android:paddingTop="6dp"
+                    android:text="@string/display_code_enter_code"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Body Layout -->
+
+        <TextView
+            android:id="@+id/need_help_link"
+            style="@style/global_link_text_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="20dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/right_arrow"
+            android:text="@string/display_code_need_help_link"
+            android:textColor="@color/bright_red"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <!-- Bottom Part -->
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightest_grey"
+        android:gravity="bottom|center" >
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="200dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="5dp"
+            android:background="@color/sky_blue"
+            android:padding="5dp"
+            android:text="@string/button_back"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.dashwire.config.widget">
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<service android:enabled="true" android:name=".services.WidgetService" android:permission="com.dashwire.config.PERM_CONFIG">
+	        <intent-filter>
+	            <action android:name="com.dashwire.config.widget.services.IWidgetService"/>
+	        </intent-filter>
+	    </service>
+	</application>
+</manifest>

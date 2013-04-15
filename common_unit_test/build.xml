@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="${project.name}">
+  <property environment="env"/>
+  <property file="local.properties"/>
+  <property file="ant.properties"/>
+  
+  <fail unless="env.ANDROID_HOME" message="ANDROID_HOME environment variable not set"/>
+  <fail unless="env.COBERTURA_HOME" message="COBERTURA_HOME environment variable not set"/>
+  <fail unless="main.location" message="main.location not set in properties file"/>
+  
+  <condition property="sdk.dir" value="${env.ANDROID_HOME}">
+    <isset property="env.ANDROID_HOME"/>
+  </condition>
+  <condition property="cobertura.dir" value="${env.COBERTURA_HOME}">
+    <isset property="env.COBERTURA_HOME"/>
+  </condition>
+  
+  <property name="junit.output.dir" value="junit"/>
+  <property name="coverage.output.dir" value="coverage"/>
+  <property name="instrumented.dir" value="instrumented"/>
+  <property name="coberturareport.dir" value="coberturareport"/>
+  <property name="debuglevel" value="source,lines,vars"/>
+  <property name="target" value="1.6"/>
+  <property name="source" value="1.6"/>
+  <!-- main.location specified in ant.properties or local.properties file -->
+  <property name="main.source.dir" value="${main.location}/src"/>
+  <property name="main.classes.dir" value="${main.location}/bin/classes"/>
+  <property name="test.source.dir" value="src"/>
+  <property name="test.classes.dir" value="bin"/>
+  
+  <path id="Android 4.1.2.libraryclasspath">
+    <pathelement location="${sdk.dir}/platforms/android-16/android.jar"/>
+  </path>
+  <path id="Android Dependencies.libraryclasspath">
+      <pathelement location="../../../shared/ra_configurator/bin/classes.jar"/>
+      <pathelement location="../../../shared/ra_base/bin/classes.jar"/>
+  </path>
+  <path id="Junit.libraryclasspath">
+    <pathelement location="libs/junit-4.10.jar"/>
+  </path>
+  <path id="test.classpath">
+    <pathelement location="${test.classes.dir}"/>
+    <pathelement location="libs/robolectric-1.2-20121026.220946-163-jar-with-dependencies.jar"/>
+    <pathelement location="libs/json-20080701.jar"/>
+    <path refid="Junit.libraryclasspath"/>
+    <path refid="Android 4.1.2.libraryclasspath"/>
+    <path refid="Android Dependencies.libraryclasspath"/>
+    <pathelement location="${main.classes.dir}"/>
+  </path>
+  
+  
+  <target name="init">
+    <mkdir dir="${test.classes.dir}"/>
+    <copy includeemptydirs="false" todir="${test.classes.dir}">
+      <fileset dir="src">
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean">
+    <delete dir="${test.classes.dir}"/>
+    <delete dir="${junit.output.dir}"/>
+    <delete dir="${instrumented.dir}"/>
+    <delete dir="${coberturareport.dir}"/>
+    <delete dir="${main.location}/tmp"/>
+  </target>
+  
+  <target name="cleanall" depends="clean">
+    <ant antfile="build.xml" dir="${main.location}" inheritAll="false" target="clean"/>
+  </target>
+  
+  <target name="build" depends="build-project"/>
+  
+  <target name="build-base">
+    <subant target="debug">
+      <fileset dir="${main.location}" includes="build.xml"/>
+    </subant>   
+  </target>
+  
+  <target name="build-project" depends="init">
+    <echo message="${ant.project.name}: ${ant.file}"/>
+    <javac debug="true" debuglevel="${debuglevel}" destdir="${test.classes.dir}" includeantruntime="false" source="${source}" target="${target}">
+      <src path="src"/>
+      <classpath refid="test.classpath"/>
+    </javac>
+  </target>
+  
+  <target name="test" depends="build">
+    <mkdir dir="${junit.output.dir}"/>
+    <junit dir="${main.location}" fork="yes" printsummary="withOutAndErr">
+      <formatter type="xml"/>
+      <batchtest todir="${junit.output.dir}">
+        <fileset dir="src">
+          <include name="**/*Test.java"/>
+        </fileset>
+      </batchtest>
+      <classpath refid="test.classpath"/>
+    </junit>
+  </target>
+  
+  <target name="junitreport" depends="test">
+    <junitreport todir="${junit.output.dir}">
+      <fileset dir="${junit.output.dir}">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${junit.output.dir}"/>
+    </junitreport>
+  </target>
+  
+  <target name="cobertura" depends="test">
+    <path id="cobertura.classpath">
+      <fileset dir="${cobertura.dir}">
+        <include name="cobertura.jar"/>
+        <include name="lib/**/*.jar"/>
+      </fileset>
+    </path>
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+    <delete file="cobertura.ser"/>
+    <mkdir dir="${instrumented.dir}"/>
+    <mkdir dir="${coberturareport.dir}"/>
+    <cobertura-instrument todir="${instrumented.dir}">
+      <fileset dir="${main.classes.dir}">
+        <include name="**/*.class"/>
+        <exclude name="**/R.class"/>
+        <exclude name="**/R$*.class"/>
+      </fileset>
+    </cobertura-instrument>
+    
+    <junit fork="yes" dir="${main.location}" failureProperty="test.failed">
+      <sysproperty key="net.sourceforge.cobertura.datafile" file="cobertura.ser"/>
+      <classpath location="${instrumented.dir}"/>
+      <classpath location="${main.classes.dir}"/>
+      <classpath refid="cobertura.classpath"/>
+      <classpath refid="test.classpath"/>
+      <formatter type="xml"/>
+      <batchtest todir="${junit.output.dir}">
+        <fileset dir="src">
+          <include name="**/*Test.java"/>
+        </fileset>
+      </batchtest>
+    </junit>
+    
+    <cobertura-report format="html" destdir="${coberturareport.dir}" srcdir="${main.source.dir}"/>
+  </target>
+</project>

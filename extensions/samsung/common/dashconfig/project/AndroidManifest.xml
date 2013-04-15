@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dashwire.config"
+    android:versionCode="2949"
+    android:versionName="1.0.0.2949"
+     >
+    <permission
+        android:name="com.dashwire.config.PERM_CONFIG"
+        android:description="@string/permission_description"
+        android:label="@string/permission_label"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+    <permission
+        android:name="com.dashwire.config.PERM_CONFIG_INTERNAL"
+        android:description="@string/permission_description"
+        android:label="@string/permission_label"
+        android:protectionLevel="signature" >
+    </permission>
+    <permission android:name="com.dashwire.config.launcher.SEND_HOMESCREEN_RESULT"
+        android:label="@string/permission_label"        
+        android:description="@string/permission_description_SEND_HOMESCREEN_RESULT"
+		android:protectionLevel="signatureOrSystem" />
+
+    <uses-permission android:name="com.dashwire.config.launcher.SEND_HOMESCREEN_RESULT" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.ADD_WIDGET_SHORTCUT"/>
+
+    <!-- Widgets -->
+    <uses-permission android:name="android.permission.BIND_APPWIDGET" />
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+          
+    <!-- email -->
+    <uses-permission android:name="com.android.email.ACCOUNT_CREATION_PERMISSION"/>
+
+    <!-- Google Account -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+
+    <!-- Dashwire permissions -->
+    <uses-permission android:name="com.dashwire.config.PERM_CONFIG" />
+    <uses-permission android:name="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+
+    <uses-sdk android:minSdkVersion="16" />
+
+    <application
+        android:name=".DashconfigApplication_Samsung"
+        android:icon="@drawable/ic_launcher_r2g_type2"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:name=".ui.StartActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.IconStartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.SetupWizardActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter android:priority="7" >
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.UPGRADE_SETUP" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.GoogleLocationUsageActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ConfigurationActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.DifferentPhoneConfirmActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ErrorDialogActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name=".ui.ForgotPasswordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.AppInstallationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.DisplayCodeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CheckConnectionActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CheckConnNeedHelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.NeedHelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ConnectedActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CompletedActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.LanguageSelectionActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.GenericErrorActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".ui.DebugLogsActivity" >
+        </activity>
+
+        <service
+            android:name=".DownloadService"
+            android:enabled="true"
+            android:permission="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+        <service
+            android:name=".configuration.DefaultConfigurationService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.dashwire.config.CONFIGURATION_SERVICE" >
+                </action>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".email.NewApiEmailService"
+            android:enabled="true"
+            android:permission="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+        <service
+            android:name=".InitializationService"
+            android:enabled="true"
+            android:permission="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+
+        <receiver
+            android:name="PackageEventReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" >
+                </action>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" >
+                </action>
+                <data android:scheme="package" >
+                </data>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="NotificationReceiver"
+            android:enabled="true"
+            android:permission="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+        <receiver
+            android:name=".ConfigurationReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.dashwire.config.PERM_CONFIG" >
+            <intent-filter>
+                <action android:name="com.dashwire.config.ACTION_CONFIGURATION" >
+                </action>
+
+                <data android:scheme="dashconfig" >
+                </data>
+            </intent-filter>
+        </receiver>
+        
+        <!-- Intent received used to install widgets and shortcuts from other applications -->
+        <receiver
+            android:name=".launcher.HomescreenConfigurationReceiver">
+            <intent-filter>
+                <action android:name="com.dashwire.homescreen.CONFIGURE_HOMESCREEN" />
+            </intent-filter>
+        </receiver>    
+		<receiver android:name=".launcher.SamsungResultsReceiver"
+		    android:exported="true" android:permission="com.dashwire.config.launcher.SEND_HOMESCREEN_RESULT">
+           <intent-filter>
+                <action android:name="com.dashwire.config.launcher.CONFIGURE_HOMESCREEN_RESULT" />
+            </intent-filter>		   
+		</receiver>        
+    </application>
+</manifest>

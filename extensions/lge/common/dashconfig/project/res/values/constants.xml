@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TODO: only adding this in for the GK first release (03/13/2013) remove later -->
+    <string name="DEFAULT_CONFIG_URL">http://att.com/configure</string>
+</resources>

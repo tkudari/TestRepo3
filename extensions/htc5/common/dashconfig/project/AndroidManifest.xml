@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dashwire.config"
+    android:versionCode="999999"
+    android:versionName="0.9.9.999999" >
+
+    <permission
+        android:name="com.dashwire.config.PERM_CONFIG"
+        android:description="@string/permission_description"
+        android:label="@string/permission_label"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+    <permission
+        android:name="com.dashwire.config.PERM_CONFIG_INTERNAL"
+        android:description="@string/permission_description"
+        android:label="@string/permission_label"
+        android:protectionLevel="signature" >
+    </permission>
+    <permission
+        android:name="com.dashwire.email.Accounts.permission.CREATE_ACCOUNT"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+    <permission
+        android:name="com.dashwire.email.Accounts.permission.CREATE_ACCOUNT_RESULT"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+    <permission
+        android:name="com.dashwire.homescreen.permission.CONFIGURE_HOMESCREEN"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+    <permission
+        android:name="com.dashwire.homescreen.permission.CONFIGURE_HOMESCREEN_RESULT"
+        android:protectionLevel="signatureOrSystem" >
+    </permission>
+
+    <uses-permission android:name="com.dashwire.config.PERM_CONFIG" />
+    <uses-permission android:name="com.dashwire.config.PERM_CONFIG_INTERNAL" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.BACKUP" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Bookmarks -->
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
+
+    <!-- Wallpapers -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="com.htc.home.personalize.permission.CONFIG_FROM_AURORA" />
+
+    <!-- Email -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="com.htc.android.mail.permission.SETUPACCOUNT" />
+    <uses-permission android:name="com.htc.android.mail.permission.ACCESS_EAS_SERVICE" />
+
+    <!-- Widgets -->
+    <uses-permission android:name="com.htc.home.personalize.permission.PERMISSION_READY2GO" />
+
+    <!-- Locale changes -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <!-- HTC Feeds Configuration -->
+    <uses-permission android:name="htc.socialmanager.permission.USE_SOCIALSERVICE" />
+
+    <uses-sdk android:minSdkVersion="16" />
+
+    <application
+        android:name=".DashconfigApplication_HTC"
+        android:icon="@drawable/ic_launcher_r2g_type2"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:name=".ui.StartActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.IconStartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.SetupWizardActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.DebugActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".login.GoogleLoginServiceActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.GoogleLocationUsageActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ConfigurationActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.DifferentPhoneConfirmActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ErrorDialogActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name=".ui.ForgotPasswordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.AppInstallationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.DisplayCodeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CheckConnectionActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CheckConnNeedHelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.NeedHelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.ConnectedActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.CompletedActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.LanguageSelectionActivity"
+            android:configChanges="locale"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.GenericErrorActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".ui.DebugLogsActivity" >
+        </activity>
+
+        <service
+            android:name=".DownloadService"
+            android:exported="false" />
+        <service
+            android:name=".configuration.NewConfigurationService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.dashwire.config.CONFIGURATION_SERVICE" >
+                </action>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".email.NewApiEmailService"
+            android:exported="false" >
+        </service>
+        <service
+            android:name=".InitializationService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".PackageEventReceiver"
+            android:permission="android.permission.INSTALL_PACKAGES" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" >
+                </action>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" >
+                </action>
+
+                <data android:scheme="package" >
+                </data>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".BootCompletedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".NotificationReceiver"
+            android:exported="false" >
+        </receiver>
+        <receiver
+            android:name=".ConfigurationReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.dashwire.config.ACTION_CONFIGURATION" >
+                </action>
+
+                <data android:scheme="dashconfig" >
+                </data>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".launcher.HomescreenConfigurationReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.dashwire.homescreen.CONFIGURE_HOMESCREEN" />
+                <action android:name="com.dashwire.homescreen.WALLPAPER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".launcher.SceneResultsReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.htc.home.personalize.ACTION_READY2GO_RESULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

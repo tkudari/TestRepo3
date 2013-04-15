@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <!-- Top Bar -->
+
+        <include layout="@layout/top_bar_grey" />
+
+        <!-- Title Layout -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/global_title_text_orange"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/start_title"
+                android:textColor="@color/bright_green" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/body"
+                style="@style/global_body_text_grey"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:paddingBottom="20dp"
+                android:text="@string/start_body"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/learn_more_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="7dp"
+                android:drawableRight="@drawable/right_arrow_blue"
+                android:gravity="left"
+                android:paddingBottom="10dp"
+                android:text="@string/start_learn_more_link"
+                android:textColor="@color/sky_blue"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <!-- Body Layout -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/get_started_main"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout02"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="bottom|center" >
+
+            <ImageView
+                android:id="@+id/get_started_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/get_started_button" >
+
+            </ImageView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Graphic Layout -->
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightest_grey"
+        android:gravity="bottom|center"
+        android:padding="0dp" >
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/sky_blue"
+            android:padding="5dp"
+            android:text="@string/button_cancel"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/select_lang_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/sky_blue"
+            android:padding="5dp"
+            android:text="@string/button_select_lang"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

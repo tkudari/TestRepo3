@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:key="Communications" android:title="Communications">
+		<CheckBoxPreference
+			android:title="Override Server"
+			android:defaultValue="false"
+			android:summary="Always use selected server"
+			android:key="overrideServer"/>
+		<ListPreference
+		  android:title="Select Server"
+	      android:dependency="overrideServer"
+		  android:summary="Select the server to connect to"
+		  android:key="overrideServerHost"
+		  android:entries="@array/serverLabels"
+		  android:entryValues="@array/serverValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Configuration">
+		<CheckBoxPreference
+			android:title="Override Configuration"
+			android:defaultValue="false"
+			android:summary="Always use specified configuration file"
+			android:key="overrideConfig"/>
+		<ListPreference
+		  android:title="Select Configuration"
+		  android:summary="Pick the config file to use"
+		  android:key="overrideConfigId"
+	      android:dependency="overrideConfig"
+		  android:entries="@array/configLabels"
+		  android:entryValues="@array/configValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Phone Number">
+		<CheckBoxPreference
+			android:title="Override Phone Number"
+			android:defaultValue="false"
+			android:summary="Simulate a phone number"
+			android:key="overridePhone"/>
+		<ListPreference
+		  android:title="Select Phone Number"
+		  android:summary="Pick the phone number"
+		  android:key="overridePhoneNumber"
+	      android:dependency="overridePhone"
+		  android:entries="@array/phoneNumberLabels"
+		  android:entryValues="@array/phoneNumberValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Pairing Timeout">
+		<CheckBoxPreference
+			android:title="Override Pairing Timeout"
+			android:defaultValue="false"
+			android:summary="Change the timeout for pairing"
+			android:key="overridePairingTimeout"/>
+		<ListPreference
+		  android:title="Select Pairing Timeout"
+		  android:summary="Pick the timeout"
+		  android:key="overridePairingTimeoutValue"
+	      android:dependency="overridePairingTimeout"
+		  android:entries="@array/timeoutLabels"
+		  android:entryValues="@array/timeoutValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Connected Timeout">
+		<CheckBoxPreference
+			android:title="Override Connected Timeout"
+			android:defaultValue="false"
+			android:summary="Change the timeout for connected"
+			android:key="overrideConnectedTimeout"/>
+		<ListPreference
+		  android:title="Select Connected Timeout"
+		  android:summary="Pick the timeout"
+		  android:key="overrideConnectedTimeoutValue"
+	      android:dependency="overrideConnectedTimeout"
+		  android:entries="@array/timeoutLabels"
+		  android:entryValues="@array/timeoutValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Code Expiration">
+		<CheckBoxPreference
+			android:title="Override Code Expiration"
+			android:defaultValue="false"
+			android:summary="Change the expiration for the code"
+			android:key="overrideCodeExpiration"/>
+		<ListPreference
+		  android:title="Select Code Expiration"
+		  android:summary="Pick the expiration"
+		  android:key="overrideCodeExpirationValue"
+	      android:dependency="overrideCodeExpiration"
+		  android:entries="@array/timeoutLabels"
+		  android:entryValues="@array/timeoutValues" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Enable Poof of Concept features">
+		<CheckBoxPreference
+			android:title="Enable POC features"
+			android:defaultValue="false"
+			android:summary="ICS Features Proof Of Concept"
+			android:key="OverrideFeatureConfig"/>
+		<ListPreference
+		  android:title="Select Feature"
+		  android:summary="Pick the Feature to test"
+		  android:key="OverrideFeatureValue"
+	      android:dependency="OverrideFeatureConfig"
+		  android:entries="@array/POCFeaturesLables"
+		  android:entryValues="@array/POCFeaturesValues" />
+	</PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,51 @@
+{
+	"samsung":
+	[
+        {
+            "type": "DefaultWidgetsShortcuts",
+            "favorites_uri":"content://com.sec.android.app.twlauncher.settings/favorites"
+        },
+        {
+            "type": "DefaultWidgetsShortcuts",
+            "favorites_uri":"content://com.sec.android.app.launcher.settings/favorites"
+        },
+        {
+            "type": "SamsungWallpaperByApk",
+            "uri_base":"android.resource://com.sec.android.app.wallpaperchooser/drawable/",
+            "apk_location":"/system/app/SecWallpaperChooser.apk"         
+        },
+        {
+            "type": "SamsungGalaxyWallpaperByApk",
+            "uri_base":"android.resource://com.android.launcher/drawable/",
+            "apk_location":"/system/app/Launcher2.apk"         
+        },
+        {
+            "type": "WallpaperByApk",
+            "uri_base":"android.resource://com.sec.android.app.twwallpaperchooser/drawable/",
+            "apk_location":"/system/app/TwWallpaperChooser.apk"
+        },
+        {
+            "type": "WallpaperByFolder",
+            "directory":"/system/wallpaper/drawable"
+        },
+        {   
+            "type": "Audio",
+            "output": "ringtones",
+            "uri":"/system/media/audio/ringtones/"
+        },
+        {
+            "type": "Audio",
+            "output": "notifications",
+            "uri":"/system/media/audio/notifications/"
+        },
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "SamsungWidgets"
+        },
+        {
+            "type": "AndroidWidgetsReleaseVersion"
+        }
+	]
+}

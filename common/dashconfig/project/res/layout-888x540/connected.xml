@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/frame"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white">
+	<RelativeLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/relativeLayout2"
+			android:layout_width="match_parent"
+			android:layout_height="fill_parent">
+		
+		<LinearLayout
+		    android:id="@+id/bottom_part_linearLayout"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:layout_alignParentBottom="true" >
+
+			<LinearLayout
+			    android:id="@+id/background"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="0dp"
+			    android:background="@drawable/connected"
+			    android:baselineAligned="true"
+			    android:gravity="bottom"
+			    android:orientation="horizontal" >
+			</LinearLayout>
+
+		    <LinearLayout
+		        android:id="@+id/button_layout"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/wizard_bottom"
+		        android:paddingBottom="2dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:paddingTop="5dp" >
+
+		        <Button
+		            android:id="@+id/cancel_button"
+		            style="@style/button_text_black"
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:layout_weight=".5"
+		            android:text="@string/button_cancel" />
+
+		        <ImageView
+		            android:id="@+id/dummy_image1"
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:layout_weight=".5" />
+		    </LinearLayout>
+		</LinearLayout>
+	</RelativeLayout>
+	<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/relativeLayout2"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<LinearLayout
+			android:id="@+id/top_part_linearLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+	
+			<!-- Top Bar -->
+			<include layout="@layout/top_bar_orange" />
+	
+			<!-- Title Layout -->
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:id="@+id/linearLayout3"
+				android:layout_width="match_parent"
+				android:paddingTop="10dp">
+				<TextView
+					style="@style/global_title_text_orange"
+					android:id="@+id/title"
+					android:text="@string/connected_title"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:paddingTop="5dp"
+					android:paddingLeft="20dp"
+					android:paddingRight="20dp">
+				</TextView>
+			</LinearLayout>
+	
+			<!-- Body Layout -->
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:id="@+id/linearLayout4"
+				android:layout_width="match_parent"
+				android:paddingTop="10dp"
+				android:orientation="vertical">
+				<TextView
+					style="@style/global_body_text_grey"
+					android:id="@+id/connected_body1"
+					android:text="@string/connected_body1"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="center|left"
+					android:paddingLeft="20dp"
+					android:paddingRight="20dp">
+				</TextView>
+				<TextView
+					style="@style/global_body_text_grey"
+					android:id="@+id/connected_body2"
+					android:text="@string/connected_body2"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:gravity="center|left"
+					android:paddingTop="7dp"
+					android:paddingLeft="20dp"
+					android:paddingRight="20dp">
+				</TextView>
+			</LinearLayout>
+		</LinearLayout>
+	
+		<!-- Bottom Part -->
+
+	</RelativeLayout>
+
+</FrameLayout>

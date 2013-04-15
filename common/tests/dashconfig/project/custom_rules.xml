@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules_r2gc-test">
+
+    <property file="${env.WORKSPACE}/common/tests/dashconfig/project/ant.properties" />
+
+    <!-- Compiles this project's .java files into .class files. -->
+    <target name="-compile" depends="-build-setup, -pre-build, -code-gen, -pre-compile">
+        <do-only-if-manifest-hasCode elseText="hasCode = false. Skipping...">
+            <!-- merge the project's own classpath and the tested project's classpath -->
+            <path id="project.javac.classpath">
+                <path refid="project.all.jars.path" />
+                <path refid="tested.project.classpath" />
+            </path>
+            <javac encoding="${java.encoding}"
+                   source="${java.source}" target="${java.target}"
+                   debug="true" extdirs="" includeantruntime="false"
+                   destdir="${out.classes.absolute.dir}"
+                   bootclasspathref="project.target.class.path"
+                   verbose="${verbose}"
+                   classpathref="project.javac.classpath"
+                   fork="${need.javac.fork}">
+                <src path="${common_src_path}" />
+                <src path="${test-common_src_path}" />
+                <src path="${source.absolute.dir}" />
+                <src path="${gen.absolute.dir}" />
+                <compilerarg line="${java.compilerargs}" />
+            </javac>
+
+            <!-- if the project is instrumented, intrument the classes -->
+            <if condition="${build.is.instrumented}">
+                <then>
+                    <echo level="info">Instrumenting classes from ${out.absolute.dir}/classes...</echo>
+
+                    <!-- build the filter to remove R, Manifest, BuildConfig -->
+                    <getemmafilter
+                            appPackage="${project.app.package}"
+                            libraryPackagesRefId="project.library.packages"
+                            filterOut="emma.default.filter"/>
+
+                    <!-- define where the .em file is going. This may have been
+             setup already if this is a library -->
+                    <property name="emma.coverage.absolute.file" location="${out.absolute.dir}/coverage.em" />
+
+                    <!-- It only instruments class files, not any external libs -->
+                    <emma enabled="true">
+                        <instr verbosity="${verbosity}"
+                               mode="overwrite"
+                               instrpath="${out.absolute.dir}/classes"
+                               outdir="${out.absolute.dir}/classes"
+                               metadatafile="${emma.coverage.absolute.file}">
+                            <filter excludes="${emma.default.filter}" />
+                            <filter value="${emma.filter}" />
+                        </instr>
+                    </emma>
+                </then>
+            </if>
+
+            <!-- if the project is a library then we generate a jar file -->
+            <if condition="${project.is.library}">
+                <then>
+                    <echo level="info">Creating library output jar file...</echo>
+                    <property name="out.library.jar.file" location="${out.absolute.dir}/classes.jar" />
+                    <if>
+                        <condition>
+                            <length string="${android.package.excludes}" trim="true" when="greater" length="0" />
+                        </condition>
+                        <then>
+                            <echo level="info">Custom jar packaging exclusion: ${android.package.excludes}</echo>
+                        </then>
+                    </if>
+
+                    <propertybyreplace name="project.app.package.path" input="${project.app.package}" replace="." with="/" />
+
+                    <jar destfile="${out.library.jar.file}">
+                        <fileset dir="${out.classes.absolute.dir}"
+                                 includes="**/*.class"
+                                 excludes="${project.app.package.path}/R.class ${project.app.package.path}/R$*.class ${project.app.package.path}/Manifest.class ${project.app.package.path}/Manifest$*.class ${project.app.package.path}/BuildConfig.class"/>
+                        <fileset dir="${source.absolute.dir}" excludes="**/*.java ${android.package.excludes}" />
+                    </jar>
+                </then>
+            </if>
+
+        </do-only-if-manifest-hasCode>
+    </target>
+
+    <target name="asset-test">
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="setprop" />
+            <arg value="asset.catalog.url"/>
+            <arg value="${asset.catalog.url}"/>
+        </exec>
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="am" />
+            <arg value="instrument"/>
+            <arg value="-w"/>
+            <arg value="-e"/>
+            <arg value="class"/>
+            <arg value="com.dashwire.config.integration.Assets"/>
+            <arg value="com.dashwire.config.test/android.test.InstrumentationTestRunner"/>
+            <!--<arg command="adb shell am instrument -w -e package com.dashwire.config com.dashwire.config.test/android.test.InstrumentationTestRunner" />-->
+        </exec>
+    </target>
+
+    <target name="test-this">
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="am" />
+            <arg value="instrument"/>
+            <arg value="-w"/>
+            <arg value="-e"/>
+            <arg value="class"/>
+            <arg value="${test.class}"/>
+            <arg value="com.dashwire.config.test/android.test.InstrumentationTestRunner"/>
+            <!--<arg command="adb shell am instrument -w -e package com.dashwire.config com.dashwire.config.test/android.test.InstrumentationTestRunner" />-->
+        </exec>
+    </target>
+
+    <target name="test">
+        <exec executable="adb" failonerror="true">
+            <arg value="shell" />
+            <arg value="am" />
+            <arg value="instrument"/>
+            <arg value="-w"/>
+            <arg value="-e"/>
+            <arg value="package"/>
+            <arg value="com.dashwire.config"/>
+            <arg value="com.dashwire.config.test/android.test.InstrumentationTestRunner"/>
+      <!--<arg command="adb shell am instrument -w -e package com.dashwire.config com.dashwire.config.test/android.test.InstrumentationTestRunner" />-->
+        </exec>
+    </target>
+
+    <target name="dinstallall" depends="clean, debug, install">
+        <ant antfile="${tested.project.dir}/build.xml" inheritall="false">
+            <target name="clean"/>
+            <target name="debug"/>
+            <target name="install"/>
+        </ant>
+    </target>
+
+    <target name="rinstallall" depends="clean, release, install">
+        <ant antfile="${tested.project.dir}/build.xml" inheritall="false">
+            <target name="clean"/>
+            <target name="release"/>
+            <target name="install"/>
+        </ant>
+    </target>
+
+    <target name="help" description="cleanup module test-common-clean">
+        <!-- dunno how to depend on android's clean, so subant instead -->
+        <subant inheritall="true" buildpath="${sdk.dir}/tools/ant" antfile="build.xml" failonerror="true">
+            <target name="help"/>
+        </subant>
+
+        <echo>Test-common Tasks. Available targets:</echo>
+        <echo>  dinstallall:  builds and installs debug OEM apk. Also builds</echo>
+        <echo>                and installs debug test apk.</echo>
+        <echo>  rinstallall:  builds and installs release OEM apk. Also builds</echo>
+        <echo>                and installs release test apk.</echo>
+        <echo>  test-this:    Specify a test class to execute from the test</echo>
+        <echo>                apk using the property 'test.class'.  For example:</echo>
+        <echo>                ant test-this -Dtest.class=com.dashwire.config.RestClientTest</echo>
+        <echo>  test:         Runs all apk tests within the package com.dashwire.config.</echo>
+        <echo>  asset-test:   Sets the android system property 'asset.catalog.url'</echo>
+        <echo>                using 'setprop' then executes Asset validation tests</echo>
+        <echo>                for the specified asset.catalog.url.</echo>
+    </target>
+</project>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COMMON:AT&amp;T Ready2Go</string>
+	<string name="top_bar_title">COMMON:AT&amp;T Ready2Go</string>
+    <string name="start_title">COMMON:Fast &amp; Easy Phone Set-Up</string>
+    <string name="start_body">COMMON:Easily set-up your phone from your computer and Ready2Go will do the rest. Click \'Get Started\' to continue.</string>
+    <string name="start_learn_more_link">COMMON:Learn more...</string>
+    <string name="about_title">COMMON:What is Ready2Go?</string>
+    <string name="about_body">COMMON:Ready2Go is a free service from AT&amp;T that helps you to easily set-up and personalize your phone from the comfort of your web browser - no cables required. \n\nWith Ready2Go, it\'s easy to set-up your e-mail accounts, import your contacts, set your wallpaper, personalize your home screens, install free applications, set your ringtones, select bookmarks for your device web browser, and even configure your Wi-Fi.</string>
+    <string name="about_next_link">COMMON:Click Next to get started!</string>
+    <string name="google_location_title">COMMON:Use Google Location</string>
+    <string name="google_location_body">COMMON:Google\'s location server provides applications with your approximate location without using GPS. \n\nYou can disable these features in Settings, under Location &amp; Security</string>
+    <string name="google_location_check_text">COMMON:Allow Google\'s location service to collect anonymous location data. Collection will occur even when no applications are running.</string>
+    <string name="display_code_title_s1">COMMON:Get Started On Your Computer</string>
+    <string name="display_code_title_s3">COMMON:Get Started On Your Computer</string>
+    <string name="display_code_body_s1">COMMON:Go to the following URL on your computer to start configuring your phone. </string>
+    <string name="display_code_body_s3">COMMON:Go to the following URL on your computer web browser to start personalizing your phone. </string>
+    <string name="display_code_goto_label">COMMON:On your computer, go to:</string>
+    <string name="display_code_goto_link">COMMON:https://att.com/pair</string>
+    <string name="display_code_enter_code_label">COMMON:Enter code:</string>
+    <string name="display_code_enter_code">COMMON:XXXXXXXX</string>
+    <string name="display_code_need_help_link">COMMON:Need help?</string>
+    <string name="check_connection_title">COMMON:Get Started On Your Computer</string>
+    <string name="check_connection_body">COMMON:Go to the following link on your computer web browser to start personalizing your phone. </string>
+    <string name="check_conn_need_help_title">COMMON:Ready2Go was unable to connect to your phone</string>
+    <string name="check_conn_need_help_body">COMMON:Ready2Go requires a data connection to function. If you already have your SIM card in and have not yet established a data connection, then please try connecting to Wi-Fi. </string>
+    <string name="check_conn_need_help_link">COMMON:Need help?</string>
+    <string name="need_help_finished_steps_ques">COMMON:I just finished the steps on the web and nothing happened on my phone</string>
+    <string name="need_help_finished_steps_ans">COMMON:Completing the Ready2Go wizard on your computer web browser should automatically result in your configuration file being sent to your phone. If this did not occur, Click here to try again</string>
+    <string name="need_help_configured_online_ques">COMMON:I previously configured online and already have an email and password</string>
+    <string name="need_help_configured_online_ans">COMMON:Click here to login and download your settings.</string>
+    <string name="need_help_click_here_link">COMMON:Click here</string>
+    <string name="connected_title">COMMON:Waiting For You \nTo Complete Set-Up</string>
+    <string name="connected_body1">COMMON:Finish personalizing your phone on your computer, and as soon as you\'re done, your phone will automatically update with what you\'ve set-up online.</string>
+    <string name="connected_body2">COMMON:Already finished and this screen is not updating? Click here.</string>
+    <string name="connected_click_here_link">COMMON:Click here.</string>
+    <string name="completed_title">COMMON:Congratulations! \nYour Phone is Ready2Go!</string>
+    <string name="completed_body">COMMON:Your phone configuration is complete. Any applications you selected will download when you click Finish and will automatically install when complete.</string>
+    <string name="connectivity_error_title">COMMON:Ready2Go was unable to establish a connection</string>
+    <string name="connectivity_error_body">COMMON:You have no data connection. Please try again, or press cancel to quit Ready2Go.</string>
+    <string name="not_connected_error_title">COMMON:Ready2Go was unable to connect to your phone</string>
+    <string name="not_connected_error_body">COMMON:Please try again, or press cancel to quit Ready2Go.</string>
+    <string name="timeout_error_title">COMMON:Your session has timed out</string>
+    <string name="timeout_error_body">COMMON:Please try again, or press cancel to quit Ready2Go.</string>
+    <string name="code_expired_title">COMMON:Your code has expired</string>
+    <string name="code_expired_body">COMMON:Please try again.</string>
+    <string name="downloading_config_error_title">COMMON:Ready2Go had a problem downloading your configuration</string>
+    <string name="downloading_config_error_body">COMMON:Please try again, or press cancel to quit Ready2Go.</string>
+    <string name="diff_phone_confirm_title">COMMON:This phone is different from the one you set up online</string>
+    <string name="diff_phone_confirm_body">COMMON:The settings you have configured online will not work on this phone.\n\nWe see your phone is a %1$s. Please visit Ready2Go and choose %1$s when selecting your device online.\n\nThank you. Please press Cancel to exit.</string>
+    <string name="configuration_title">COMMON:Configuration is in progress</string>
+    <string name="app_installation_title">COMMON:Installing</string>
+    <string name="login_title">COMMON:Are you Ready2Go?</string>
+    <string name="login_body">COMMON:Enter the email address and password you used when completing Ready2Go on the web to download your personalized settings</string>
+    <string name="login_username_label">COMMON:Email</string>
+    <string name="login_username">COMMON:email@email.com</string>
+    <string name="login_password_label">COMMON:Password</string>
+    <string name="login_password">COMMON:XXXXXXXX</string>
+    <string name="login_forgot_link">COMMON:Forgot email and/or password?</string>
+    <string name="login_invalid_credential">COMMON:Invalid Credentials...</string>
+    <string name="login_system_error">COMMON:System Error...</string>
+    <string name="stop_all_confirm">COMMON:Are you sure you want to stop all Application downloads?</string>
+    <string name="forgot_password_title">COMMON:Forgot email and/or password?</string>
+    <string name="forgot_password_body">COMMON:Go to Website http://www.att.com/ready2go</string>
+    
+    <string name="progress_dialog_session">COMMON:Creating session, Please wait...</string>
+    <string name="progress_dialog_authentication">COMMON:Authentication is in progress, please wait...</string>
+    <string name="progress_dialog_status_check">COMMON:Checking status, please wait...</string>
+    <string name="progress_downloading_config">COMMON:Downloading Configuration, Please wait...</string>
+    <string name="toast_connect_server">COMMON:Trying again to connect the server...</string>
+    <string name="progress_dialog_google_location">COMMON:Updating Google Location, Please wait...</string>
+    
+    <string name="button_stop_all">COMMON:Stop All</string>
+    <string name="button_back">COMMON:Back</string>
+    <string name="button_next">COMMON:Next</string>
+    <string name="button_cancel">COMMON:Cancel</string>
+    <string name="button_try_again">COMMON:Try Again</string>
+    <string name="button_finish">COMMON:Finish</string>
+    <string name="button_yes">COMMON:Yes</string>
+    <string name="button_no">COMMON:No</string>
+    <string name="button_continue">COMMON:Continue</string>
+    <string name="button_select_lang">COMMON:Select Language</string>
+    
+    <string name="notification_ins_app_title">COMMON:Installing Applications</string>
+    <string name="notification_ins_app_body">COMMON:Downloading</string>
+    <string name="notification_ins_app_body_complete">COMMON:Installed All Apps</string>
+    <string name="notification_config_phone_title">COMMON:Configure your phone</string>
+    <string name="notification_config_phone_message">COMMON:Configure your phone online</string>
+    <string name="notification_config_phone_body">COMMON:Click to get started</string>
+    <string name="notification_setup_google_title">COMMON:Set-up your Google Account</string>
+    <string name="notification_setup_google_body">COMMON:Click here to add or create an account</string>
+    <string name="notification_social_hub_status_title">COMMON:Social Login Failed</string>
+    <string name="notification_social_login_fail_title">COMMON:Social Login Failed</string>
+    <string name="notification_social_login_fail_body">COMMON:Click here to re-enter your credentials</string>
+    <string name="notification_social_conn_error_title">COMMON:Unable to Connect</string>
+    <string name="notification_social_conn_error_body">COMMON:Check your data connection</string>
+    <string name="notification_restart_device_title">COMMON:Please Restart Your Phone</string>
+    <string name="notification_restart_device_body">COMMON:This will complete the set-up process</string>
+    
+    <string name="app_installing">COMMON:Installing</string>
+    <string name="app_installed">COMMON:Installed</string>
+    
+    <string name="lang_selection_title">COMMON:Select Language</string>
+    
+    <string name="uri_config">/config</string>
+    <string name="uri_sessions">/sessions</string>
+    
+    <string name="res_accounts">COMMON:Google Accounts</string>
+    <string name="res_emails">COMMON:Email Accounts</string>
+    <string name="res_contacts">COMMON:Contacts</string>
+    <string name="res_bookmarks">COMMON:Bookmarks</string>
+    <string name="res_shortcuts">COMMON:Shortcuts</string>
+    <string name="res_feeds">COMMON:Feeds</string>
+    <string name="res_wallpaper">COMMON:Wallpaper</string>
+    <string name="res_ringtones">COMMON:Ringtones</string>
+    <string name="res_wifi">COMMON:Wifi</string>
+    <string name="res_social_networks">COMMON:Social Networks</string>
+    <string name="res_exchange_accounts">COMMON:Exchange Accounts</string>
+    <string name="res_easy">COMMON:Easy Experience</string>
+    
+    <string name="permission_label">COMMON:Modify email, contacts, shortcuts and widgets</string>
+    <string name="permission_description">
+        COMMON:Allows the application to modify email, contacts, shortcuts, wallpapers, ringtones, notifications and installed widgets.
+    </string>
+    <string name="permission_description_SEND_HOMESCREEN_RESULT">
+        COMMON:Allows the application to receive results about the configuration of Widgets, Shortcuts and Wallpapers
+	</string>
+
+    <string name="content_description__error_icon">COMMON:Image icon of exclamation point</string>
+
+</resources>

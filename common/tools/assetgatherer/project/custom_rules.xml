@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="asset_gatherer_custom">
+   
+    <target name="getAssets">
+		<loadproperties srcFile="fctnl-test-results/screenshotspath.properties"/>
+		<property file="screenshotspath.properties" />
+		<echo level="info">Getting device Screenshots from path ${device.external.storage.screenshot}</echo>
+        <mkdir dir="asset-from-device"/>
+        <exec executable="${adb}" failonerror="true" dir="asset-from-device">
+              <arg line="${adb.device.arg}" />
+              <arg value="pull" />
+              <arg value="/data/data/com.dashwire.asset.gatherer.${oem}" />
+        </exec>
+        <!-- <echo level="info">Removing device Screenshots from path ${device.external.storage.screenshot}</echo>
+        <exec executable="adb">
+        	<arg value="shell"/>
+        	<arg value="rm"/>
+        	<arg value="-r"/>
+        	<arg value="/data/data/com.dashwire.asset.gatherer.${oem}/motorola*"/>
+       </exec> -->
+    </target>
+   
+</project>

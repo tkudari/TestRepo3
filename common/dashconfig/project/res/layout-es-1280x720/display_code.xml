@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/relativeLayout1"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white">
+
+	<!-- Top Part -->
+	<LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- Top Bar -->
+		<include layout="@layout/top_bar_orange" />
+
+		<!-- Title Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout2"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp">
+			<TextView
+				style="@style/global_title_text_orange"
+				android:id="@+id/display_code_title"
+				android:text=""
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Body Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp"
+			android:orientation="vertical">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/display_code_body"
+				android:text=""
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="center|left"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+	</LinearLayout>
+
+	<!-- Bottom Part -->
+	<LinearLayout
+		android:id="@+id/bottom_part_linearLayout"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_alignParentBottom="true"
+		android:orientation="vertical">
+		<LinearLayout
+			android:id="@+id/code_bg_linearLayout"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:background="@drawable/code_background"
+			android:gravity="right"
+			android:orientation="vertical"
+			android:paddingLeft="2dp"
+			android:paddingRight="2dp">
+
+			<LinearLayout
+				android:id="@+id/code_linearLayout"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:gravity="right">
+				<LinearLayout
+					android:id="@+id/arrow_linearLayout"
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:gravity="bottom">
+					<ImageView
+						android:id="@+id/dummy_image1"
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight=".6">
+					</ImageView>
+					<ImageView
+						android:src="@drawable/code_arrow"
+						android:id="@+id/code_arrow"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight=".2">
+					</ImageView>
+					<ImageView
+						android:id="@+id/dummy_image2"
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight=".2">
+					</ImageView>
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/code_part_linearLayout"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:background="@drawable/rounded_blue_background"
+					android:paddingTop="15dp"
+					android:paddingBottom="15dp"
+					android:paddingLeft="15dp"
+					android:paddingRight="15dp">
+
+					<!-- Go to Layout -->
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:id="@+id/linearLayout4"
+						android:layout_width="match_parent"
+						android:orientation="vertical">
+						<TextView
+							style="@style/global_label_text_white"
+							android:id="@+id/goto_label"
+							android:text="@string/display_code_goto_label"
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:gravity="left">
+						</TextView>
+						<TextView
+							style="@style/url_text_grey"
+							android:id="@+id/goto_link"
+							android:text="@string/display_code_goto_link"
+							android:layout_height="50dp"
+							android:gravity="center"
+							android:paddingTop="5dp"
+							android:paddingBottom="5dp"
+							android:paddingLeft="2dp"
+							android:paddingRight="2dp"
+							android:background="@color/white"
+							android:layout_gravity="center"
+							android:layout_width="245dp">
+						</TextView>
+					</LinearLayout>
+
+					<!-- Enter code Layout -->
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:id="@+id/linearLayout5"
+						android:layout_width="match_parent"
+						android:paddingTop="15dp"
+						android:orientation="vertical">
+						<TextView
+							style="@style/global_label_text_white"
+							android:id="@+id/goto_label"
+							android:text="@string/display_code_enter_code_label"
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:gravity="left">
+						</TextView>
+						<TextView
+							style="@style/code_text_grey"
+							android:id="@+id/code"
+							android:text="@string/display_code_enter_code"
+							android:layout_height="50dp"
+							android:gravity="center"
+							android:paddingBottom="5dp"
+							android:paddingTop="5dp"
+							android:paddingLeft="5dp"
+							android:paddingRight="5dp"
+							android:background="@color/white"
+							android:layout_gravity="center"
+							android:layout_width="245dp">
+						</TextView>
+					</LinearLayout>
+				</LinearLayout>
+			</LinearLayout>
+
+			<!-- Need Help Layout -->
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:id="@+id/linearLayout6"
+				android:layout_width="match_parent"
+				android:paddingTop="20dp"
+				android:orientation="vertical"
+				android:gravity="right">
+				<TextView
+					style="@style/global_link_text_blue"
+					android:id="@+id/need_help_link"
+					android:text="@string/display_code_need_help_link"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:paddingLeft="20dp"
+					android:paddingRight="20dp">
+				</TextView>
+			</LinearLayout>
+
+		</LinearLayout>
+		<!-- Button Layout -->
+		<LinearLayout
+			android:id="@+id/button_layout"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:background="@drawable/wizard_bottom"
+			android:layout_alignParentBottom="true"
+			android:paddingTop="5dp"
+			android:paddingBottom="2dp"
+			android:paddingLeft="5dp"
+			android:paddingRight="5dp">
+			<!-- Cancel Button -->
+			<Button
+				android:text="@string/button_back"
+				android:id="@+id/back_button"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight=".5"
+				style="@style/button_text_black">
+			</Button>
+			<ImageView
+				android:id="@+id/dummy_image3"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight=".5">
+			</ImageView>
+		</LinearLayout>
+	</LinearLayout>
+</RelativeLayout>

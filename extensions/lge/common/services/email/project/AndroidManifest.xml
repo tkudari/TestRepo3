@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dashwire.config.email"
+    android:sharedUserId="com.lge.email.sharedkey"
+    android:versionCode="999999" android:versionName="0.9.9.999999" >
+    
+    <permission android:name="com.dashwire.config.email.permission.EMAIL_CONFIG"
+        android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="com.dashwire.config.email.permission.EMAIL_CONFIG"/> 
+    <uses-permission android:name="com.dashwire.config.PERM_CONFIG"/> 
+    <uses-sdk android:minSdkVersion="15" />
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <service
+            android:name=".EmailService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.dashwire.config.email.permission.EMAIL_CONFIG"
+            >
+        </service>
+        <service
+            android:name=".ExchangeEmailService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.dashwire.config.email.permission.EMAIL_CONFIG"
+            >
+        </service>
+    </application>
+    
+</manifest>

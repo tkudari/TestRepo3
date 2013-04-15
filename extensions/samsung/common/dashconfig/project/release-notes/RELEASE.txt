@@ -1,0 +1,2 @@
+== Samsung Release Notes]
+   1058: Home screen launcher fix 

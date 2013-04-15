@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>  
+     <!--  declare device-specific constants and overrides of common here -->
+
+    <string name="FIRST_BOOT_LAUNCHER">SetUpWizard</string>
+    <string name="REFRESH_LAUNCHER_FLAG">refreshLaucher</string>
+    <string name="MAIL_BOX_URI">content://com.android.email.provider/mailbox</string>
+    <string name="HOST_AUTH_URI">content://com.android.email.provider/hostauth</string>
+    <string name="ACCOUNT_URI">content://com.android.email.provider/account</string>
+    <string name="ACCOUNT_CB_URI">content://com.android.email.provider/accountcb</string>
+    <string name="TWLAUNCHER_COMP">com.sec.android.app.launcher</string>
+    <string name="FAVORITES_URI">content://com.sec.android.app.launcher.settings/favorites</string>
+    <string name="GOOGLE_SETTINGS_PARTNER_URI">content://com.google.settings/partner</string>
+    <string name="SETTINGS_COMP">com.android.settings</string>
+    <string name="EMAIL_CONFIG_COMPONENT_URI">com.dashwire.config</string> 
+    <string name="ESPANOL_COUNTRY">US</string> 
+
+</resources>

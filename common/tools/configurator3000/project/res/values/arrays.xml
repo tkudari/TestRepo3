@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="serverLabels">
+ <item>https://dashconfig.com</item>
+ <item>https://ready2go.dev.dashlab.net</item>
+ <item>https://ready2go.qa.dashlab.net</item>
+ <item>http://ready2go.st.dashlab.net</item>
+ <item>https://ready2go.demo.dashlab.net</item>
+ <item>http://dev.dashconfig.com</item>
+ <item>http://ready2go.qa.dashlab.net</item>
+ <item>https://staging.dashwire.com</item>
+</string-array>
+<string-array name="serverValues">
+ <item>https://dashconfig.com</item>
+ <item>https://ready2go.dev.dashlab.net</item>
+ <item>https://ready2go.qa.dashlab.net</item>
+ <item>http://ready2go.st.dashlab.net</item>
+ <item>https://ready2go.demo.dashlab.net</item>
+ <item>http://dev.dashconfig.com</item>
+ <item>http://ready2go.qa.dashlab.net</item>
+ <item>https://staging.dashwire.com</item>
+</string-array>
+<string-array name="configLabels">
+ <item>AAB notification</item>
+ <item>Shortcuts</item>
+ <item>Widgets</item>
+ <item>SMS Ringtone</item>
+ <item>Bookmarks</item>
+ <item>Smorgasbord</item>
+ <item>Exchange Account</item>
+ <item>Applications</item>
+ <item>Contact</item>
+ <item>Aol/Att Email</item>
+ <item>Google Account</item>
+</string-array>
+<string-array name="configValues">
+ <item>d420cda3839556bbc2b6dfea7de3d56f</item>
+ <item>62674e6cc2c5ae871b7f55fbbc162ad7</item>
+ <item>1d5a23c0244962d031056ccf17abcf59</item>
+ <item>12794936f76e6214c5e53ae25235f8a0</item>
+ <item>425cb364f0a511e1ed7c23a94c3c9fc0</item>
+ <item>33c679be4516f9f102d9fa03d6c982c9</item>
+ <item>8d108f9f1e006f2bf0fe7814cf79abbd</item>
+ <item>ff0f3fab748a87218e35a179f631880d</item>
+ <item>5200adfe8fbf3c8c593523c48ac40a73</item>
+ <item>adfe3b4166d5b1898d50fade4379cbf2</item>
+ <item>630cd9270396186a0fbf19e7381afa58</item>
+</string-array>
+
+<string-array name="phoneNumberLabels">
+	<item>1 (206) 555-1212</item>
+	<item>1 (206) 555-3333</item>
+</string-array>
+<string-array name="phoneNumberValues">
+	<item>12065551212</item>
+	<item>12065553333</item>
+</string-array>
+
+<string-array name="timeoutLabels">
+	<item>Ten Seconds</item>
+	<item>Thirty Seconds</item>
+	<item>One Minute</item>
+	<item>Ten Minutes</item>
+	<item>Thirty Minutes</item>
+</string-array>
+<string-array name="timeoutValues">
+	<item>10000</item>
+	<item>30000</item>
+	<item>60000</item>
+	<item>600000</item>
+	<item>1800000</item>
+</string-array>
+<string-array name="POCFeaturesLables">
+	<item>Contacts - Test</item>
+	<item>Bookmarks</item>
+	<item>Install Application - ATT Mark the spot</item>
+	<item>Wallpaper - beats</item>
+	<item>Android Widgets - Google Search</item>
+	<item>HTC Widgets - clock</item>
+	<item>Shortcuts - youtube</item>
+	<item>Ringtones - Aquila</item>
+	<item>Notifications - Argon</item>
+	<item>Wifi - Test Wep</item>
+</string-array>
+<string-array name="POCFeaturesValues">
+    <item>\"contacts\":[{\"given\":\"Test\",\"email\":\"test@contact.com\",\"family\":\"Contact\",\"phones\":[{\"type\":\"mobile\",\"number\":\"111-222-3333\"}]}]</item>
+	<item>\"bookmarks\":[{\"favicon\":{\"alt\":\"FavIcon\",\"src\":\"https://s3.amazonaws.com/media.dashconfig.com/images/bookmarks-default-favicon.png\"},\"categories\":[4],\"url\":\"http://dictionary.com\",\"name\":\"Dictionary.com\"}]</item>
+	<item>\"applications\":[{\"id\":\"https://s3.amazonaws.com/media.dashwire.com/dashconfig/captivate/apks/com.att.android.markthespot.apk\",\"className\":\"attMarkSpot\",\"title\":\"ATT Mark the Spot\",\"src\":\"https://s3.amazonaws.com/media.dashconfig.com/images/appLogos/ATTMarkSpot.png\",\"smSrc\":\"https://s3.amazonaws.com/media.dashconfig.com/images/appLogos/small/applications_small.png\",\"size\":1}]</item>
+	<item>\"wallpapers\":[{\"page\":0,\"uri\":\"file:///system/customize/resource/beats_panel.jpg\",\"src\":\"\"}]</item>
+	<item>\"shortcuts\":[{\"id\":\"com.google.android.googlequicksearchbox/.SearchWidgetProvider\",\"screen\":1,\"title\":\"Google Search\",\"cols\":4,\"src\":\"\",\"y\":0,\"x\":0,\"rows\":1,\"workspaceId\":1,\"type\":\"aw\",\"category\": \"Widgets\"}]</item>
+	<item>\"shortcuts\":[{\"id\":\"com.htc.clock3dwidget/.ClockWidgetProvider\",\"screen\":0,\"title\":\"Clock\",\"cols\":4,\"src\":\"\",\"y\":0,\"x\":0,\"rows\":2,\"workspaceId\":1,\"type\":\"htcw\",\"category\": \"Widgets\",\"uri\": \"com.htc.clock3dwidget/.weatherclock.WeatherClockWidgetView\"}]</item>
+	<item>\"shortcuts\":[{\"id\":\"com.google.android.youtube/.HomeActivity\",\"screen\":1,\"title\":\"YouTube\",\"cols\":1,\"src\":\"\",\"y\":3,\"x\":0,\"rows\":1,\"workspaceId\":1,\"category\": \"Shortcuts\"}]</item>
+	<item>\"ringtones\":[{\"type\":\"call\",\"uri\":\"file:///system/media/audio/ringtones/Aquila.ogg\",\"title\":\"Aquila\"}]</item>
+	<item>\"ringtones\":[{\"type\":\"sms\",\"uri\":\"file:///system/media/audio/notifications/Argon.ogg\",\"title\":\"Argon\"}]</item>
+    <item>\"networks\":[{\"ssid\":\"Dashwire Private\",\"key\":\"d@shm0b1l3\",\"security\":\"wpa\"}]</item>
+</string-array>
+
+</resources>

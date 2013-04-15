@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:id="@+id/top_part_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- Top Bar -->
+
+        <include layout="@layout/top_bar_grey" />
+
+        <!-- Title Layout -->
+
+
+        <!-- Body Layout -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/global_title_text_orange"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="10dp"
+                android:text="@string/connected_title"
+                android:textColor="@color/bright_green" />
+
+            <TextView
+                android:id="@+id/connected_body1"
+                style="@style/global_body_text_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:paddingBottom="20dp"
+                android:text="@string/connected_body1"
+                android:textSize="18sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/connected_body2"
+                style="@style/global_body_text_grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:paddingBottom="20dp"
+                android:text="@string/connected_body2"
+                android:textSize="18sp" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Part -->
+
+    <LinearLayout
+        android:id="@+id/bottom_part_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <!-- Graphic Layout -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/connected" >
+        </LinearLayout>
+
+        <!-- Button Layout -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/lightest_grey"
+            android:baselineAligned="false"
+            android:gravity="bottom|center"
+            android:padding="0dp" >
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="@style/button_text_black"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="5dp"
+                android:background="@color/sky_blue"
+                android:padding="5dp"
+                android:text="@string/button_cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+{
+	"motorola":
+	[
+		{
+            "type": "DefaultWidgetsShortcuts",
+			"favorites_uri":"content://com.motorola.homescreen.settings/favorites"
+		},
+        {
+            "type": "WallpaperByApk",
+            "uri_base":"android.resource://com.motorola.homescreen.config/drawable/",
+            "apk_location":"/system/app/HomeConfig.apk"
+        },
+		{
+            "type": "Audio",
+            "output":"ringtones",
+			"uri":"/system/media/audio/ringtones/"
+		},
+		{
+			"type": "Audio",
+            "output":"notifications",
+			"uri":"/system/media/audio/notifications/"
+		},
+        {
+            "type": "Shortcuts"
+        },
+        {
+            "type": "AndroidWidgetsReleaseVersion"
+        }
+	]
+}

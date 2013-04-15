@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/relativeLayout2"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white">
+	<LinearLayout
+		android:id="@+id/linearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<!-- Top Bar -->
+		<include layout="@layout/top_bar_orange" />
+
+		<!-- Title Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3"
+			android:layout_width="match_parent"
+			android:paddingTop="20dp">
+			<TextView
+				style="@style/global_title_text_orange"
+				android:id="@+id/title"
+				android:text="@string/about_title"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Body Layout -->
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout4"
+			android:layout_width="match_parent"
+			android:gravity="center_horizontal"
+			android:paddingTop="20dp">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/body"
+				android:text="@string/about_body"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:paddingLeft="20dp"
+				android:paddingRight="23dp">
+			</TextView>
+		</LinearLayout>
+
+		<!-- Next link -->
+		<LinearLayout
+			android:id="@+id/linearLayout5"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:gravity="left"
+			android:paddingTop="20dp"
+			android:paddingBottom="10dp">
+			<TextView
+				style="@style/global_body_text_grey"
+				android:id="@+id/about_next_link"
+				android:text="@string/about_next_link"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:gravity="left"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp">
+			</TextView>
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<!-- Button Layout -->
+	<LinearLayout
+		android:id="@+id/button_layout"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:background="@drawable/wizard_bottom"
+		android:layout_alignParentBottom="true"
+		android:paddingTop="5dp"
+		android:paddingBottom="2dp"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp">
+		<!-- Back Button -->
+		<Button
+			android:text="@string/button_back"
+			android:id="@+id/back_button"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5"
+			style="@style/button_text_black">
+		</Button>
+		<!-- Next Button -->
+		<Button
+			android:text="@string/button_next"
+			android:id="@+id/next_button"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight=".5"
+			style="@style/button_text_black">
+		</Button>
+	</LinearLayout>
+</RelativeLayout>
